@@ -19,6 +19,7 @@ import WaterQualityInfo from "./components/DeviceList/WaterQuality/WaterQualityI
 import PressureControl from "./components/DeviceList/PressureControl/PressureControl";
 import PressureControlDetail from "./components/DeviceList/PressureControl/PressureControlDetail";
 import PressureControlEdit from "./components/DeviceList/PressureControl/PressureControlEdit";
+import File from "./components/File/File";
 export default function useRouteElement() {
   const route = useRoutes([
     {
@@ -97,6 +98,10 @@ export default function useRouteElement() {
     {
       path: "/auth/login",
       element: <Login />,
+    },
+    {
+      path: "/file",
+      element: <File />,
     },
   ]);
 
