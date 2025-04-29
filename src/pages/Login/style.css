@@ -1,0 +1,13 @@
+.bg-img {
+  background-image: url("/images/bg.jpg");
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-color-form {
+  background-color: #f2f2f4;
+}
