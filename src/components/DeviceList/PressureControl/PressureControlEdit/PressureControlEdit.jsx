@@ -1,5 +1,7 @@
 import React from "react";
 import ActiveBtn from "../../../../commons/ActiveBtn";
+import { LocationEdit, Link } from "lucide-react";
+import EditOption from "../../../EditOption/EditOption";
 export default function PressureControlEdit() {
   return (
     <div>
@@ -70,188 +72,86 @@ export default function PressureControlEdit() {
         </li>
         <li className="py-4">
           <div className="flex items-center">
-            <svg
+            {/* <svg
               xmlns="http://www.w3.org/2000/svg"
-              fill="none"
               viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
+              fill="currentColor"
               className="w-6 h-6 mr-2 text-blue-500"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            <span className="font-medium">Đồng bộ RTC cho module</span>
-          </div>
-        </li>
-        <li className="py-4">
-          <div className="flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-6 h-6 mr-2 text-blue-500"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            <span className="font-medium">History Data</span>
-          </div>
-        </li>
-        {/* Các mục dưới đây được chuyển thành input */}
-        <li className="py-4">
-          <div className="flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-6 h-6 mr-2 text-blue-500"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
+              <path d="M12 2a9 9 0 0 0-9 9v7c0 1.105.895 2 2 2a1 1 0 1 0 0 2h18a1 1 0 1 0 0-2c0-1.105.895-2 2-2v-7a9 9 0 0 0-9-9Zm7 9c0 1.105-.895 2-2 2H7c-1.105 0-2-.895-2-2V7c0-1.105.895-2 2-2h10c1.105 0 2 .895 2 2v4Z" />
+            </svg> */}
+            <LocationEdit />
             <div className="flex flex-col">
-              <label htmlFor="responseTime" className="font-medium">
-                Response Time
-              </label>
-              <input
-                id="responseTime"
-                type="text"
-                defaultValue="0s"
-                className="text-gray-500 bg-transparent outline-none"
-              />
+              <span className="font-medium">GPS</span>
+              {/* <input className="text-gray-500">WC4B4R-W-0.1</input> */}
+              <div className="flex gap-1 items-center">
+                <input
+                  className="text-gray-500 border"
+                  type="text"
+                  defaultValue={11}
+                />
+
+                <Link />
+              </div>
             </div>
           </div>
         </li>
-        <li className="py-4">
-          <div className="flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-6 h-6 mr-2 text-blue-500"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            <div className="flex flex-col">
-              <label htmlFor="intervalReadPressure" className="font-medium">
-                Interval Read Pressure
-              </label>
-              <input
-                id="intervalReadPressure"
-                type="text"
-                defaultValue="0s"
-                className="text-gray-500 bg-transparent outline-none"
-              />
-            </div>
-          </div>
-        </li>
-        <li className="py-4">
-          <div className="flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-6 h-6 mr-2 text-blue-500"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            <div className="flex flex-col">
-              <label htmlFor="intervalReadMetter" className="font-medium">
-                Interval Read Metter
-              </label>
-              <input
-                id="intervalReadMetter"
-                type="text"
-                defaultValue="0s"
-                className="text-gray-500 bg-transparent outline-none"
-              />
-            </div>
-          </div>
-        </li>
-        <li className="py-4">
-          <div className="flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-6 h-6 mr-2 text-blue-500"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            <div className="flex flex-col">
-              <label htmlFor="pressureAngleRef" className="font-medium">
-                Pressure &amp; Angle Reference
-              </label>
-              <input
-                id="pressureAngleRef"
-                type="text"
-                defaultValue="0.00bar ~ 0°"
-                className="text-gray-500 bg-transparent outline-none"
-              />
-            </div>
-          </div>
-        </li>
-        <li className="py-4">
-          <div className="flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-6 h-6 mr-2 text-blue-500"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            <div className="flex flex-col">
-              <label htmlFor="limitAngle" className="font-medium">
-                Limit Angle
-              </label>
-              <input
-                id="limitAngle"
-                type="text"
-                defaultValue="0°"
-                className="text-gray-500 bg-transparent outline-none"
-              />
-            </div>
-          </div>
-        </li>
+        <EditOption
+          icon="Clock"
+          title="Đồng bộ RTC cho module"
+          description="Thao tác đồng bộ thời gian thực RTC"
+          initialState={false}
+          onToggle={(newState) => console.log("RTC: ", newState)}
+        />
+
+        <EditOption
+          icon="Clock"
+          title="History Data"
+          description="Truy xuất dữ liệu lịch sử"
+          initialState={false}
+          onToggle={(newState) => console.log("History: ", newState)}
+        />
+
+        <EditOption
+          icon="Clock"
+          title="Response Time"
+          description="Thời gian phản hồi: 0s"
+          initialState={false}
+          onToggle={(newState) => console.log("Response Time: ", newState)}
+        />
+
+        <EditOption
+          icon="Clock"
+          title="Interval Read Pressure"
+          description="Thời gian đọc áp suất: 0s"
+          initialState={false}
+          onToggle={(newState) => console.log("Read Pressure: ", newState)}
+        />
+
+        <EditOption
+          icon="Clock"
+          title="Interval Read Metter"
+          description="Thời gian đọc đồng hồ: 0s"
+          initialState={false}
+          onToggle={(newState) => console.log("Read Metter: ", newState)}
+        />
+
+        <EditOption
+          icon="Clock"
+          title="Pressure & Angle Reference"
+          description="0.00bar ~ 0°"
+          initialState={false}
+          onToggle={(newState) => console.log("Ref: ", newState)}
+        />
+
+        <EditOption
+          icon="Clock"
+          title="Limit Angle"
+          description="Giới hạn góc: 0°"
+          initialState={false}
+          onToggle={(newState) => console.log("Limit Angle: ", newState)}
+        />
+
         {/* thiet lap dieu khien xuxng */}
         <div>
           <div className="bg-gray-400 flex items-center justify-between">
@@ -412,875 +312,129 @@ export default function PressureControlEdit() {
           <h3 className="bg-gray-400 font-bold p-1">
             Cài đặt góc quay theo thời gian
           </h3>
-
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Giai đoạn 1</span>
-                  <p className="text-gray-500">
-                    Khung giờ: 0 giờ 0 phút | Góc quay: 0
-                  </p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Giai đoạn 2</span>
-                  <p className="text-gray-500">
-                    Khung giờ: 0 giờ 0 phút | Góc quay: 0
-                  </p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Giai đoạn 3</span>
-                  <p className="text-gray-500">
-                    Khung giờ: 0 giờ 0 phút | Góc quay: 0
-                  </p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Giai đoạn 4</span>
-                  <p className="text-gray-500">
-                    Khung giờ: 0 giờ 0 phút | Góc quay: 0
-                  </p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Giai đoạn 5</span>
-                  <p className="text-gray-500">
-                    Khung giờ: 0 giờ 0 phút | Góc quay: 0
-                  </p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-
+          {/*  */}
+          {Array.from({ length: 5 }).map((_, index) => (
+            <EditOption
+              key={index}
+              icon="Time"
+              title={`Giai đoạn ${index + 1}`}
+              description="Khung giờ: 0 giờ 0 phút | Góc quay: 0"
+              initialState={false}
+              onToggle={(newState) => {
+                console.log(
+                  `Trạng thái mới của khoảng ${index + 1}:`,
+                  newState
+                );
+              }}
+            />
+          ))}
           {/* cai dat goc quay theo ap suat */}
           <h3 className="bg-gray-400 font-bold p-1">
             Cài đặt góc quay theo áp suất
           </h3>
-
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Khoảng cài đặt 1</span>
-                  <p className="text-gray-500">
-                    Khung giờ: 0 giờ 0 phút | Góc quay: 0
-                  </p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Khoảng cài đặt 2</span>
-                  <p className="text-gray-500">
-                    Khung giờ: 0 giờ 0 phút | Góc quay: 0
-                  </p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Khoảng cài đặt 3</span>
-                  <p className="text-gray-500">
-                    Khung giờ: 0 giờ 0 phút | Góc quay: 0
-                  </p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Khoảng cài đặt 4</span>
-                  <p className="text-gray-500">
-                    Khung giờ: 0 giờ 0 phút | Góc quay: 0
-                  </p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Khoảng cài đặt 5</span>
-                  <p className="text-gray-500">
-                    Low: 0 | High: 0 | Góc quay: 0
-                  </p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-
+          {Array.from({ length: 5 }).map((_, index) => (
+            <EditOption
+              key={index}
+              icon="Time"
+              title={`Khoảng cài đặt ${index + 1}`}
+              description="Khung giờ: 0 giờ 0 phút | Góc quay: 0"
+              initialState={false}
+              onToggle={(newState) => {
+                console.log(
+                  `Trạng thái mới của khoảng ${index + 1}:`,
+                  newState
+                );
+              }}
+            />
+          ))}
           {/* cai dat dong mo van theo ap suat */}
           <h3 className="bg-gray-400 font-bold p-1">
             Cài đặt đóng/mở van theo áp suất (PV &gt; SP)
           </h3>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Kích hoạt</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Cài đặt áp suất</span>
-                  <p className="text-gray-500">0 bar</p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path d="M18 10h-3v2h3v-2zM13 10h-3v2h3v-2zM8 10H5v2h3v-2zM19 5v14H5V5h14zm-1 1h-3v2h3V6zM13 6h-3v2h3V6zM8 6H5v2h3V6zM18 17h-3v-2h3v2zM13 17h-3v-2h3v2zM8 17H5v-2h3v2z" />
-                </svg>
-                <div>
-                  <span className="font-medium">Chọn trạng thái van 1</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path d="M18 10h-3v2h3v-2zM13 10h-3v2h3v-2zM8 10H5v2h3v-2zM19 5v14H5V5h14zm-1 1h-3v2h3V6zM13 6h-3v2h3V6zM8 6H5v2h3V6zM18 17h-3v-2h3v2zM13 17h-3v-2h3v2zM8 17H5v-2h3v2z" />
-                </svg>
-                <div>
-                  <span className="font-medium">Chọn trạng thái van 2</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path d="M18 10h-3v2h3v-2zM13 10h-3v2h3v-2zM8 10H5v2h3v-2zM19 5v14H5V5h14zm-1 1h-3v2h3V6zM13 6h-3v2h3V6zM8 6H5v2h3V6zM18 17h-3v-2h3v2zM13 17h-3v-2h3v2zM8 17H5v-2h3v2z" />
-                </svg>
-                <div>
-                  <span className="font-medium">Chọn trạng thái van 3</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path d="M18 10h-3v2h3v-2zM13 10h-3v2h3v-2zM8 10H5v2h3v-2zM19 5v14H5V5h14zm-1 1h-3v2h3V6zM13 6h-3v2h3V6zM8 6H5v2h3V6zM18 17h-3v-2h3v2zM13 17h-3v-2h3v2zM8 17H5v-2h3v2z" />
-                </svg>
-                <div>
-                  <span className="font-medium">Chọn trạng thái van 4</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-
+          <EditOption
+            icon="Time"
+            title="Kích hoạt"
+            initialState={false} // Mặc định trạng thái là "tắt"
+            onToggle={(newState) => console.log("Trạng thái mới: ", newState)}
+          />{" "}
+          <EditOption
+            icon="Time"
+            title="Cài đặt áp suất"
+            description="0 bar"
+            initialState={false} // Mặc định trạng thái là "tắt"
+            onToggle={(newState) => console.log("Trạng thái mới: ", newState)}
+          />
+          {Array.from({ length: 4 }).map((_, index) => (
+            <EditOption
+              key={index}
+              icon="Val"
+              title={`Chọn trạng thái van ${index + 1}`}
+              initialState={false}
+              onToggle={(newState) => {
+                console.log(
+                  `Trạng thái mới của van khoảng ${index + 1}:`,
+                  newState
+                );
+              }}
+            />
+          ))}
           {/* pv < sv */}
           {/* cai dat dong mo van theo ap suat */}
           <h3 className="bg-gray-400 font-bold p-1">
             Cài đặt đóng/mở van theo áp suất (PV &lt; SP)
           </h3>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Kích hoạt</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Cài đặt áp suất</span>
-                  <p className="text-gray-500">0 bar</p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path d="M18 10h-3v2h3v-2zM13 10h-3v2h3v-2zM8 10H5v2h3v-2zM19 5v14H5V5h14zm-1 1h-3v2h3V6zM13 6h-3v2h3V6zM8 6H5v2h3V6zM18 17h-3v-2h3v2zM13 17h-3v-2h3v2zM8 17H5v-2h3v2z" />
-                </svg>
-                <div>
-                  <span className="font-medium">Chọn trạng thái van 1</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path d="M18 10h-3v2h3v-2zM13 10h-3v2h3v-2zM8 10H5v2h3v-2zM19 5v14H5V5h14zm-1 1h-3v2h3V6zM13 6h-3v2h3V6zM8 6H5v2h3V6zM18 17h-3v-2h3v2zM13 17h-3v-2h3v2zM8 17H5v-2h3v2z" />
-                </svg>
-                <div>
-                  <span className="font-medium">Chọn trạng thái van 2</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path d="M18 10h-3v2h3v-2zM13 10h-3v2h3v-2zM8 10H5v2h3v-2zM19 5v14H5V5h14zm-1 1h-3v2h3V6zM13 6h-3v2h3V6zM8 6H5v2h3V6zM18 17h-3v-2h3v2zM13 17h-3v-2h3v2zM8 17H5v-2h3v2z" />
-                </svg>
-                <div>
-                  <span className="font-medium">Chọn trạng thái van 3</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path d="M18 10h-3v2h3v-2zM13 10h-3v2h3v-2zM8 10H5v2h3v-2zM19 5v14H5V5h14zm-1 1h-3v2h3V6zM13 6h-3v2h3V6zM8 6H5v2h3V6zM18 17h-3v-2h3v2zM13 17h-3v-2h3v2zM8 17H5v-2h3v2z" />
-                </svg>
-                <div>
-                  <span className="font-medium">Chọn trạng thái van 4</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-
+          <EditOption
+            icon="Time"
+            title="Kích hoạt"
+            initialState={false} // Mặc định trạng thái là "tắt"
+            onToggle={(newState) => console.log("Trạng thái mới: ", newState)}
+          />{" "}
+          <EditOption
+            icon="Time"
+            title="Cài đặt áp suất"
+            description="0 bar"
+            initialState={false} // Mặc định trạng thái là "tắt"
+            onToggle={(newState) => console.log("Trạng thái mới: ", newState)}
+          />
+          {Array.from({ length: 4 }).map((_, index) => (
+            <EditOption
+              key={index}
+              icon="Val"
+              title={`Chọn trạng thái van ${index + 1}`}
+              initialState={false}
+              onToggle={(newState) => {
+                console.log(
+                  `Trạng thái mới của van khoảng ${index + 1}:`,
+                  newState
+                );
+              }}
+            />
+          ))}
           {/* tu dong dieu khien theo ápuat */}
           <h3 className="bg-gray-400 font-bold p-1">
             Tự động điều khiển theo áp suất
           </h3>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Kích hoạt</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Khoảng cài đặt 1</span>
-                  <p className="text-gray-500">
-                    Time: 00~00 | Pressure: 0.00~0.00
-                  </p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Khoảng cài đặt 2</span>
-                  <p className="text-gray-500">
-                    Time: 00~00 | Pressure: 0.00~0.00
-                  </p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Khoảng cài đặt 3</span>
-                  <p className="text-gray-500">
-                    Time: 00~00 | Pressure: 0.00~0.00
-                  </p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Khoảng cài đặt 4</span>
-                  <p className="text-gray-500">
-                    Time: 00~00 | Pressure: 0.00~0.00
-                  </p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Khoảng cài đặt 5</span>
-                  <p className="text-gray-500">
-                    {" "}
-                    Time: 00~00 | Pressure: 0.00~0.00
-                  </p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-
+          <EditOption
+            icon="Time"
+            title="Kích hoạt"
+            initialState={false} // Mặc định trạng thái là "tắt"
+            onToggle={(newState) => console.log("Trạng thái mới: ", newState)}
+          />
+          {Array.from({ length: 5 }).map((_, index) => (
+            <EditOption
+              key={index}
+              icon="Time"
+              title={`Khoảng cài đặt ${index + 1}`}
+              description="Time: 00~00 | Pressure: 0.00~0.00"
+              initialState={false}
+              onToggle={(newState) => {
+                console.log(
+                  `Trạng thái mới của khoảng ${index + 1}:`,
+                  newState
+                );
+              }}
+            />
+          ))}
           {/* cai dat goc quay theo ap suat */}
           <div className="flex items-center bg-gray-400 ">
             <div className="flex items-center">
@@ -1297,173 +451,21 @@ export default function PressureControlEdit() {
               <span className="mx-2">Pressure:</span> <span>0.89 bar</span>
             </div>
           </div>
-
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Khoảng cài đặt 1</span>
-                  <p className="text-gray-500">
-                    Khung giờ: 0 giờ 0 phút | Góc quay: 0
-                  </p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Khoảng cài đặt 2</span>
-                  <p className="text-gray-500">
-                    Khung giờ: 0 giờ 0 phút | Góc quay: 0
-                  </p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Khoảng cài đặt 3</span>
-                  <p className="text-gray-500">
-                    Khung giờ: 0 giờ 0 phút | Góc quay: 0
-                  </p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Khoảng cài đặt 4</span>
-                  <p className="text-gray-500">
-                    Khung giờ: 0 giờ 0 phút | Góc quay: 0
-                  </p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Khoảng cài đặt 5</span>
-                  <p className="text-gray-500">
-                    Low: 0 | High: 0 | Góc quay: 0
-                  </p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-
+          {Array.from({ length: 5 }).map((_, index) => (
+            <EditOption
+              key={index}
+              icon="Time"
+              title={`Khoảng cài đặt ${index + 1}`}
+              description="Khung giờ: 0 giờ 0 phút | Góc quay: 0"
+              initialState={false}
+              onToggle={(newState) => {
+                console.log(
+                  `Trạng thái mới của khoảng ${index + 1}:`,
+                  newState
+                );
+              }}
+            />
+          ))}
           {/* id tham chieu */}
           {/* cai dat dong mo van theo ap suat */}
           <div className="flex items-center bg-gray-400 ">
@@ -1481,166 +483,28 @@ export default function PressureControlEdit() {
               <span className="mx-2">Pressure:</span> <span>0.89 bar</span>
             </div>
           </div>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Kích hoạt</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Cài đặt áp suất</span>
-                  <p className="text-gray-500">0 bar</p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path d="M18 10h-3v2h3v-2zM13 10h-3v2h3v-2zM8 10H5v2h3v-2zM19 5v14H5V5h14zm-1 1h-3v2h3V6zM13 6h-3v2h3V6zM8 6H5v2h3V6zM18 17h-3v-2h3v2zM13 17h-3v-2h3v2zM8 17H5v-2h3v2z" />
-                </svg>
-                <div>
-                  <span className="font-medium">Chọn trạng thái van 1</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path d="M18 10h-3v2h3v-2zM13 10h-3v2h3v-2zM8 10H5v2h3v-2zM19 5v14H5V5h14zm-1 1h-3v2h3V6zM13 6h-3v2h3V6zM8 6H5v2h3V6zM18 17h-3v-2h3v2zM13 17h-3v-2h3v2zM8 17H5v-2h3v2z" />
-                </svg>
-                <div>
-                  <span className="font-medium">Chọn trạng thái van 2</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path d="M18 10h-3v2h3v-2zM13 10h-3v2h3v-2zM8 10H5v2h3v-2zM19 5v14H5V5h14zm-1 1h-3v2h3V6zM13 6h-3v2h3V6zM8 6H5v2h3V6zM18 17h-3v-2h3v2zM13 17h-3v-2h3v2zM8 17H5v-2h3v2z" />
-                </svg>
-                <div>
-                  <span className="font-medium">Chọn trạng thái van 3</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path d="M18 10h-3v2h3v-2zM13 10h-3v2h3v-2zM8 10H5v2h3v-2zM19 5v14H5V5h14zm-1 1h-3v2h3V6zM13 6h-3v2h3V6zM8 6H5v2h3V6zM18 17h-3v-2h3v2zM13 17h-3v-2h3v2zM8 17H5v-2h3v2z" />
-                </svg>
-                <div>
-                  <span className="font-medium">Chọn trạng thái van 4</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-
+          <EditOption
+            icon="Time"
+            title="Kích hoạt"
+            initialState={false} // Mặc định trạng thái là "tắt"
+            onToggle={(newState) => console.log("Trạng thái mới: ", newState)}
+          />{" "}
+          <EditOption
+            icon="Time"
+            title="Cài đặt áp suất"
+            description="0 bar"
+            initialState={false} // Mặc định trạng thái là "tắt"
+            onToggle={(newState) => console.log("Trạng thái mới: ", newState)}
+          />
+          {Array.from({ length: 4 }).map((_, index) => (
+            <EditOption
+              key={index}
+              icon="Val"
+              title={`Chọn trạng thái van ${index + 1}`}
+              initialState={false} // Mặc định trạng thái là "tắt"
+              onToggle={(newState) => console.log("Trạng thái mới: ", newState)}
+            />
+          ))}
           {/* id tham chiếu pv < sp */}
           <div className="flex items-center bg-gray-400 ">
             <div className="flex items-center">
@@ -1657,165 +521,28 @@ export default function PressureControlEdit() {
               <span className="mx-2">Pressure:</span> <span>0.89 bar</span>
             </div>
           </div>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Kích hoạt</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <div>
-                  <span className="font-medium">Cài đặt áp suất</span>
-                  <p className="text-gray-500">0 bar</p>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path d="M18 10h-3v2h3v-2zM13 10h-3v2h3v-2zM8 10H5v2h3v-2zM19 5v14H5V5h14zm-1 1h-3v2h3V6zM13 6h-3v2h3V6zM8 6H5v2h3V6zM18 17h-3v-2h3v2zM13 17h-3v-2h3v2zM8 17H5v-2h3v2z" />
-                </svg>
-                <div>
-                  <span className="font-medium">Chọn trạng thái van 1</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path d="M18 10h-3v2h3v-2zM13 10h-3v2h3v-2zM8 10H5v2h3v-2zM19 5v14H5V5h14zm-1 1h-3v2h3V6zM13 6h-3v2h3V6zM8 6H5v2h3V6zM18 17h-3v-2h3v2zM13 17h-3v-2h3v2zM8 17H5v-2h3v2z" />
-                </svg>
-                <div>
-                  <span className="font-medium">Chọn trạng thái van 2</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path d="M18 10h-3v2h3v-2zM13 10h-3v2h3v-2zM8 10H5v2h3v-2zM19 5v14H5V5h14zm-1 1h-3v2h3V6zM13 6h-3v2h3V6zM8 6H5v2h3V6zM18 17h-3v-2h3v2zM13 17h-3v-2h3v2zM8 17H5v-2h3v2z" />
-                </svg>
-                <div>
-                  <span className="font-medium">Chọn trạng thái van 3</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
-          <li className="py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-6 h-6 mr-2 text-blue-500"
-                >
-                  <path d="M18 10h-3v2h3v-2zM13 10h-3v2h3v-2zM8 10H5v2h3v-2zM19 5v14H5V5h14zm-1 1h-3v2h3V6zM13 6h-3v2h3V6zM8 6H5v2h3V6zM18 17h-3v-2h3v2zM13 17h-3v-2h3v2zM8 17H5v-2h3v2z" />
-                </svg>
-                <div>
-                  <span className="font-medium">Chọn trạng thái van 4</span>
-                </div>
-              </div>
-              <button className="relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                <span className="sr-only">Use setting</span>
-                <span
-                  className="relative inline-block h-5 w-5 rounded-full bg-gray-200 transition ease-in-out duration-200 transform translate-x-0 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-          </li>
+          <EditOption
+            icon="Time"
+            title="Kích hoạt"
+            initialState={false} // Mặc định trạng thái là "tắt"
+            onToggle={(newState) => console.log("Trạng thái mới: ", newState)}
+          />{" "}
+          <EditOption
+            icon="Time"
+            title="Cài đặt áp suất"
+            description="0 bar"
+            initialState={false} // Mặc định trạng thái là "tắt"
+            onToggle={(newState) => console.log("Trạng thái mới: ", newState)}
+          />
+          {Array.from({ length: 4 }).map((_, index) => (
+            <EditOption
+              key={index}
+              icon="Val"
+              title={`Chọn trạng thái van ${index + 1}`}
+              initialState={false} // Mặc định trạng thái là "tắt"
+              onToggle={(newState) => console.log("Trạng thái mới: ", newState)}
+            />
+          ))}
         </div>
       </ul>
     </div>

@@ -19,5 +19,15 @@ export const convertExcelSerialToDate = (serialDate) => {
 };
 
 // Test với serial number 45661
+export function convertToUnixTimestamp(dateString) {
+  // Giả sử định dạng là dd/mm/yy hh:mm hoặc d/m/yy hh:mm
+  const [datePart, timePart] = dateString.split(" ");
+  const [day, month, year] = datePart.split("/").map(Number);
+  const [hour, minute] = timePart.split(":").map(Number);
 
+  // Năm '25' → 2025 (nếu <= 30 thì là 20xx)
+  const fullYear = year < 30 ? 2000 + year : 1900 + year;
 
+  const dateObj = new Date(fullYear, month - 1, day, hour, minute);
+  return Math.floor(dateObj.getTime() / 1000); // trả về timestamp tính bằng giây
+}

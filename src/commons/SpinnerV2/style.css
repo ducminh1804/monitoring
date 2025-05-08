@@ -1,3 +1,4 @@
+/* HTML: <div class="loader"></div> */
 .loader {    
   --r1: 154%;
   --r2: 68.5%;
@@ -14,20 +15,8 @@
   background-repeat:no-repeat;
   animation: l9 2s infinite linear;
 }
-
-@keyframes fadeBackground {
-  10% {
-    background-color: rgba(0, 0, 0, 0.5); /* Màu đen mờ ban đầu */
-  }
-  50% {
-    background-color: rgba(0, 0, 0, 0.5); /* Màu đen mờ ban đầu */
-  }
-  100% {
-    background-color: rgba(0, 0, 0, 0.5); /* Màu đen mờ ban đầu */
-  }
+@keyframes l9 {
+    33%  {background-position:    0% 33% ,100% 33% ,200% 33% }
+    66%  {background-position: -100%  66%,0%   66% ,100% 66% }
+    100% {background-position:    0% 100%,100% 100%,200% 100%}
 }
-
-.fade-bg {
-  animation: fadeBackground 3s ease-in-out forwards; /* Tăng thời gian từ 3s lên 5s */
-}
-

@@ -14,7 +14,7 @@ export default function DevicePage() {
     { id: "dataLogger", name: "Data Logger", color: "border-green-500" },
     {
       id: "valveBreaker",
-      name: "Đóng ngắt van bướm",
+      name: "Đóng ngắt van bước tự động ",
       color: "border-yellow-500",
     },
     {

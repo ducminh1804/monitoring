@@ -1,110 +1,417 @@
-import React from "react";
-import { Line } from "react-chartjs-2"; // Dùng cho biểu đồ đường
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-
-// Đăng ký các phần của Chart.js mà bạn sẽ sử dụng
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
+import { createChart, LineSeries } from "lightweight-charts";
+import { useEffect, useRef, useState } from "react";
+import { data } from "../../utils/data";
 
 const Chart = (props) => {
   const { result } = props;
+  const pressureIns = result.map((item) => ({
+    time: item.time,
+    value: parseFloat(item["Pressure In"]),
+    unit: "bar", // Thêm đơn vị "bar"
+  }));
 
-  // Chuyển đổi thời gian thành chuỗi hh:mm
-  const formatTime = (time) => {
-    const date = new Date(time); // Giả sử 'time' là chuỗi ngày giờ hợp lệ
-    const hours = String(date.getHours()).padStart(2, "0");
-    const minutes = String(date.getMinutes()).padStart(2, "0");
-    return `${hours}:${minutes}`; // Định dạng chỉ giờ và phút hh:mm
-  };
+  const pressureOuts = result.map((item) => ({
+    time: item.time,
+    value: parseFloat(item["Pressure Out"]),
+    unit: "bar", // Thêm đơn vị "bar"
+  }));
 
-  // Lọc dữ liệu chỉ lấy các giờ tròn (00:00, 01:00,...)
-  const filteredResult = result.filter((item) => {
-    const date = new Date(item.time); // Chuyển đổi chuỗi thời gian thành đối tượng Date
-    const minute = date.getMinutes();
+  const velocitys = result.map((item) => ({
+    time: item.time,
+    value: parseFloat(item["Velocity"]),
+    unit: "m/s", // Thêm đơn vị "m/s"
+  }));
 
-    // Lọc chỉ lấy những mục có giờ tròn (minute == 0)
-    return minute === 0; // Chỉ lấy dữ liệu khi phút là 0 (giờ tròn)
+  const flowRates = result.map((item) => ({
+    time: item.time,
+    value: parseFloat(item["Flow Rate"]),
+    unit: "m³/h", // Thêm đơn vị "m³/h"
+  }));
+
+  const [visibleSeries, setVisibleSeries] = useState({
+    pressureIn: false,
+    pressureOut: false,
+    velocity: false,
+    flowRate: false,
   });
 
-  // Chuẩn bị dữ liệu cho biểu đồ từ result
-  const labels = filteredResult.map((item) => formatTime(item.time)); // Lấy mảng giờ làm nhãn cho trục X
-  const pressureIn = filteredResult.map((item) => item["Pressure In"]);
-  const pressureOut = filteredResult.map((item) => item["Pressure Out"]);
-  const velocity = filteredResult.map((item) => item["Velocity"]);
-  const flowRate = filteredResult.map((item) => item["Flow Rate"]);
-
-  const data = {
-    labels: labels, // Dữ liệu giờ làm trục x
-    datasets: [
-      {
-        label: "Pressure In",
-        data: pressureIn, // Dữ liệu "Pressure In"
-        borderColor: "rgba(75, 192, 192, 1)",
-        backgroundColor: "rgba(75, 192, 192, 0.2)",
-        borderWidth: 1,
-      },
-      {
-        label: "Pressure Out",
-        data: pressureOut, // Dữ liệu "Pressure Out"
-        borderColor: "rgba(153, 102, 255, 1)",
-        backgroundColor: "rgba(153, 102, 255, 0.2)",
-        borderWidth: 1,
-      },
-      {
-        label: "Velocity",
-        data: velocity, // Dữ liệu "Velocity"
-        borderColor: "rgba(255, 159, 64, 1)",
-        backgroundColor: "rgba(255, 159, 64, 0.2)",
-        borderWidth: 1,
-      },
-      {
-        label: "Flow Rate",
-        data: flowRate, // Dữ liệu "Flow Rate"
-        borderColor: "rgba(255, 99, 132, 1)",
-        backgroundColor: "rgba(255, 99, 132, 0.2)",
-        borderWidth: 1,
-      },
-    ],
+  const handleCheckboxChange = (event) => {
+    const { name, checked } = event.target;
+    setVisibleSeries((prevState) => ({
+      ...prevState,
+      [name]: checked,
+    }));
   };
+  const chartRef = useRef();
 
-  // Tùy chọn cấu hình cho biểu đồ
-  const options = {
-    scales: {
-      x: {
-        ticks: {
-          callback: function (value) {
-            return value; // Hiển thị chỉ giá trị giờ
-          },
+  useEffect(() => {
+    const chart = createChart(chartRef.current, {
+      width: 950,
+      height: 480,
+      crosshair: {
+        horzLine: {
+          visible: true,
         },
       },
-      y: {
-        beginAtZero: true,
+    });
+    chart.applyOptions({
+      timeScale: {
+        rightOffset: 0,
+        allowBoldLabels: true,
+        secondsVisible: true,
+        timeVisible: true,
       },
-    },
-  };
+      leftPriceScale: {
+        visible: true,
+      },
+    });
+    const lineSeries1 = chart.addSeries(LineSeries, {
+      color: "blue",
+    });
+    const lineSeries2 = chart.addSeries(LineSeries, {
+      color: "green",
+    });
+
+    const lineSeries3 = chart.addSeries(LineSeries, {
+      color: "yellow",
+    });
+    const lineSeries4 = chart.addSeries(LineSeries, {
+      color: "red",
+      priceScaleId: "left",
+    });
+
+    lineSeries1.setData(pressureIns);
+    lineSeries2.setData(pressureOuts);
+    lineSeries3.setData(velocitys);
+    lineSeries4.setData(flowRates);
+    lineSeries1.applyOptions({ visible: visibleSeries.pressureIn });
+    lineSeries2.applyOptions({ visible: visibleSeries.pressureOut });
+    lineSeries3.applyOptions({ visible: visibleSeries.velocity });
+    lineSeries4.applyOptions({ visible: visibleSeries.flowRate });
+    return () => {
+      chart.remove();
+    };
+  }, [pressureIns]);
 
   return (
     <div>
-      <h2>Biểu đồ đường (Line Chart)</h2>
-      <Line data={data} options={options} />
+      {/* Các checkbox cho phép người dùng chọn để hiển thị hay ẩn từng dòng */}
+      <div className="flex gap-5">
+        <div className="flex items-center space-x-2">
+          <input
+            type="checkbox"
+            name="pressureIn"
+            checked={visibleSeries.pressureIn}
+            onChange={handleCheckboxChange}
+            className="h-5 w-5 text-blue-500 focus:ring-blue-500"
+          />
+          <label className="text-lg font-semibold text-blue-500">
+            Pressure In (bar)
+          </label>
+        </div>
+
+        <div className="flex items-center space-x-2">
+          <input
+            type="checkbox"
+            name="pressureOut"
+            checked={visibleSeries.pressureOut}
+            onChange={handleCheckboxChange}
+            className="h-5 w-5 text-green-500 focus:ring-green-500"
+          />
+          <label className="text-lg font-semibold text-green-500">
+            Pressure Out (bar)
+          </label>
+        </div>
+
+        <div className="flex items-center space-x-2">
+          <input
+            type="checkbox"
+            name="velocity"
+            checked={visibleSeries.velocity}
+            onChange={handleCheckboxChange}
+            className="h-5 w-5 text-yellow-500 focus:ring-yellow-500"
+          />
+          <label className="text-lg font-semibold text-yellow-500">
+            Velocity (m/s)
+          </label>
+        </div>
+
+        <div className="flex items-center space-x-2">
+          <input
+            type="checkbox"
+            name="flowRate"
+            checked={visibleSeries.flowRate}
+            onChange={handleCheckboxChange}
+            className="h-5 w-5 text-red-500 focus:ring-red-500"
+          />
+          <label className="text-lg font-semibold text-red-500">
+            Flow Rate (m³/h)
+          </label>
+        </div>
+      </div>
+
+      <div className="relative">
+        <span className="absolute z-50 left-[-15px] top-[200px] text-red-500 font-bold rotate-270 inline-block">
+          m³/h
+        </span>
+        <div ref={chartRef}></div>
+        <span className="absolute z-50 right-0 top-[200px] font-bold rotate-90 inline-block">
+          bar
+        </span>
+      </div>
     </div>
   );
 };
 
 export default Chart;
+
+
+// import React, { useEffect, useRef, useState } from "react";
+// import { createChart, LineSeries } from "lightweight-charts";
+
+// const Chart = ({ result }) => {
+//   const [timeFilter, setTimeFilter] = useState("day"); // 'day', 'week', 'month'
+//   const [startDate, setStartDate] = useState("");
+//   const [endDate, setEndDate] = useState("");
+//   const [visibleSeries, setVisibleSeries] = useState({
+//     pressureIn: true,
+//     pressureOut: true,
+//     velocity: true,
+//     flowRate: true,
+//   });
+
+//   // Handle Checkbox changes to toggle visibility of chart data series
+//   const handleCheckboxChange = (event) => {
+//     const { name, checked } = event.target;
+//     setVisibleSeries((prevState) => ({
+//       ...prevState,
+//       [name]: checked,
+//     }));
+//   };
+
+//   // Filter data by date range selected (Day, Week, Month)
+//   const filterDataByDate = (data) => {
+//     const start = new Date(startDate);
+//     const end = new Date(endDate);
+//     return data.filter((item) => {
+//       const itemDate = new Date(item.time);
+//       return itemDate >= start && itemDate <= end;
+//     });
+//   };
+
+//   const chartRef = useRef();
+
+//   useEffect(() => {
+//     const chart = createChart(chartRef.current, {
+//       width: 950,
+//       height: 480,
+//       crosshair: {
+//         horzLine: {
+//           visible: true,
+//         },
+//       },
+//     });
+
+//     chart.applyOptions({
+//       timeScale: {
+//         rightOffset: 0,
+//         allowBoldLabels: true,
+//         secondsVisible: true,
+//         timeVisible: true,
+//       },
+//       leftPriceScale: {
+//         visible: true,
+//       },
+//     });
+
+//     const pressureIns = result.map((item) => ({
+//       time: item.time,
+//       value: parseFloat(item["Pressure In"]),
+//       unit: "bar",
+//     }));
+
+//     const pressureOuts = result.map((item) => ({
+//       time: item.time,
+//       value: parseFloat(item["Pressure Out"]),
+//       unit: "bar",
+//     }));
+
+//     const velocitys = result.map((item) => ({
+//       time: item.time,
+//       value: parseFloat(item["Velocity"]),
+//       unit: "m/s",
+//     }));
+
+//     const flowRates = result.map((item) => ({
+//       time: item.time,
+//       value: parseFloat(item["Flow Rate"]),
+//       unit: "m³/h",
+//     }));
+
+//     const filteredPressureIns = filterDataByDate(pressureIns);
+//     const filteredPressureOuts = filterDataByDate(pressureOuts);
+//     const filteredVelocitys = filterDataByDate(velocitys);
+//     const filteredFlowRates = filterDataByDate(flowRates);
+
+//     const lineSeries1 = chart.addSeries(LineSeries, {
+//       color: "blue",
+//     });
+
+//     const lineSeries2 = chart.addSeries(LineSeries, {
+//       color: "green",
+//     });
+
+//     const lineSeries3 = chart.addSeries(LineSeries, {
+//       color: "yellow",
+//     });
+
+//     const lineSeries4 = chart.addSeries(LineSeries, {
+//       color: "red",
+//       priceScaleId: "left",
+//     });
+
+//     lineSeries1.setData(filteredPressureIns);
+//     lineSeries2.setData(filteredPressureOuts);
+//     lineSeries3.setData(filteredVelocitys);
+//     lineSeries4.setData(filteredFlowRates);
+
+//     lineSeries1.applyOptions({ visible: visibleSeries.pressureIn });
+//     lineSeries2.applyOptions({ visible: visibleSeries.pressureOut });
+//     lineSeries3.applyOptions({ visible: visibleSeries.velocity });
+//     lineSeries4.applyOptions({ visible: visibleSeries.flowRate });
+
+//     return () => {
+//       chart.remove();
+//     };
+//   }, [result, startDate, endDate, visibleSeries]);
+
+//   const handleTimeFilterChange = (event) => {
+//     setTimeFilter(event.target.value);
+//   };
+
+//   const handleStartDateChange = (event) => {
+//     setStartDate(event.target.value);
+//   };
+
+//   const handleEndDateChange = (event) => {
+//     setEndDate(event.target.value);
+//   };
+
+//   return (
+//     <div>
+//       <div>
+//         <label>Choose Time Filter: </label>
+//         <select value={timeFilter} onChange={handleTimeFilterChange}>
+//           <option value="day">By Day</option>
+//           <option value="week">By Week</option>
+//           <option value="month">By Month</option>
+//         </select>
+//       </div>
+
+//       {timeFilter === "day" && (
+//         <div>
+//           <label>Select Date Range: </label>
+//           <input
+//             type="date"
+//             value={startDate}
+//             onChange={handleStartDateChange}
+//           />
+//           <span> to </span>
+//           <input type="date" value={endDate} onChange={handleEndDateChange} />
+//         </div>
+//       )}
+
+//       {timeFilter === "week" && (
+//         <div>
+//           <label>Select Week Range: </label>
+//           <input
+//             type="week"
+//             value={startDate}
+//             onChange={handleStartDateChange}
+//           />
+//           <span> to </span>
+//           <input type="week" value={endDate} onChange={handleEndDateChange} />
+//         </div>
+//       )}
+
+//       {timeFilter === "month" && (
+//         <div>
+//           <label>Select Month Range: </label>
+//           <input
+//             type="month"
+//             value={startDate}
+//             onChange={handleStartDateChange}
+//           />
+//           <span> to </span>
+//           <input type="month" value={endDate} onChange={handleEndDateChange} />
+//         </div>
+//       )}
+
+//       <div className="flex gap-5">
+//         <div className="flex items-center space-x-2">
+//           <input
+//             type="checkbox"
+//             name="pressureIn"
+//             checked={visibleSeries.pressureIn}
+//             onChange={handleCheckboxChange}
+//             className="h-5 w-5 text-blue-500 focus:ring-blue-500"
+//           />
+//           <label className="text-lg font-semibold text-blue-500">
+//             Pressure In (bar)
+//           </label>
+//         </div>
+
+//         <div className="flex items-center space-x-2">
+//           <input
+//             type="checkbox"
+//             name="pressureOut"
+//             checked={visibleSeries.pressureOut}
+//             onChange={handleCheckboxChange}
+//             className="h-5 w-5 text-green-500 focus:ring-green-500"
+//           />
+//           <label className="text-lg font-semibold text-green-500">
+//             Pressure Out (bar)
+//           </label>
+//         </div>
+
+//         <div className="flex items-center space-x-2">
+//           <input
+//             type="checkbox"
+//             name="velocity"
+//             checked={visibleSeries.velocity}
+//             onChange={handleCheckboxChange}
+//             className="h-5 w-5 text-yellow-500 focus:ring-yellow-500"
+//           />
+//           <label className="text-lg font-semibold text-yellow-500">
+//             Velocity (m/s)
+//           </label>
+//         </div>
+
+//         <div className="flex items-center space-x-2">
+//           <input
+//             type="checkbox"
+//             name="flowRate"
+//             checked={visibleSeries.flowRate}
+//             onChange={handleCheckboxChange}
+//             className="h-5 w-5 text-red-500 focus:ring-red-500"
+//           />
+//           <label className="text-lg font-semibold text-red-500">
+//             Flow Rate (m³/h)
+//           </label>
+//         </div>
+//       </div>
+
+//       <div className="relative">
+//         <span className="absolute z-50 left-[-15px] top-[200px] text-red-500 font-bold rotate-270 inline-block">
+//           m³/h
+//         </span>
+//         <div ref={chartRef}></div>
+//         <span className="absolute z-50 right-0 top-[200px] font-bold rotate-90 inline-block">
+//           bar
+//         </span>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Chart;

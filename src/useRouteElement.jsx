@@ -32,7 +32,7 @@ export default function useRouteElement() {
           children: [
             {
               path: "/main/reports",
-              element: <Report />,
+              element: <File />,
             },
             {
               path: "/main/devices",

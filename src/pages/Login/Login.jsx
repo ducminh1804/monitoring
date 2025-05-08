@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../commons/Loading/Loading";
-import "./style.css"
+import "./style.css";
+import Spinner from "../../commons/Spinner";
 export default function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
