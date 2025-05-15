@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { RefreshCcw, Pencil, ChartCandlestick } from "lucide-react";
 import Spinner from "../../../../commons/Spinner";
+import val_on from "/svgs/val_on.svg";
+import val_off from "/svgs/val_off.svg";
+
 export default function DataLoggerDetail() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -16,6 +19,9 @@ export default function DataLoggerDetail() {
   const handleEdit = () => {
     navigate(`/main/devices/dataLogger/2/edit`);
   };
+
+  const [active, setActive] = useState(false);
+
   return (
     <div className="w-[80%] border p-2">
       <div className="flex justify-between items-center ">
@@ -35,22 +41,13 @@ export default function DataLoggerDetail() {
           <Pencil />
         </div>
       </div>
-      <div className="flex justify-between items-center  mt-4 my-2">
-        <div className="border rounded  p-2 flex flex-col items-center gap-2">
-          <ChartCandlestick />
-          <span>Van </span>
-        </div>{" "}
-        <div className="border rounded  p-2 flex flex-col items-center gap-2">
-          <ChartCandlestick />
-          <span>Van 2</span>
-        </div>{" "}
-        <div className="border rounded  p-2 flex flex-col items-center gap-2">
-          <ChartCandlestick />
-          <span>Van 3</span>
-        </div>{" "}
-        <div className="border rounded  p-2 flex flex-col items-center gap-2">
-          <ChartCandlestick />
-          <span>Van 4</span>
+
+      <div className="flex justify-center mt-4 ">
+        <div className="border w-full rounded  p-2 flex flex-col items-center gap-2">
+          <div onClick={() => setActive((prev) => !prev)} className="w-[20%]">
+            <img src={active ? val_on : val_off} alt="" />
+          </div>
+          <span>Lock/Clean </span>
         </div>
       </div>
 

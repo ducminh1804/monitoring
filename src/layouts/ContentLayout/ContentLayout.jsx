@@ -9,9 +9,40 @@ export default function ContentLayout() {
       <div className="border-b p-2">
         <Header />
       </div>
-      <div className="p-2 flex-1 overflow-auto">
+      <div className=" flex-1 overflow-auto">
         {/* phần Outlet có scroll */}
         <Outlet />
+        {/* <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div>
+        <div>fsdfsf</div> */}
       </div>
     </div>
   );

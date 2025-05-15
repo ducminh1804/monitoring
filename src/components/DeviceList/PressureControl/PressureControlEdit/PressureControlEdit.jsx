@@ -1,8 +1,18 @@
 import React from "react";
 import ActiveBtn from "../../../../commons/ActiveBtn";
 import { LocationEdit, Link } from "lucide-react";
-import EditOption from "../../../EditOption/EditOption";
+import EditOption from "../../../CustomComponent/EditOption/EditOption";
 export default function PressureControlEdit() {
+  const handleGocQuayTheoThoiGian = (key, state) => {
+    console.log("goc-quay-theo-thoi-gian:", key);
+    console.log("state:", state);
+  };
+
+  const handleGocQuayTheoApSuat = (key, state) => {
+    console.log("goc-quay-theo-ap-suat:", key);
+    console.log("state:", state);
+  };
+
   return (
     <div>
       <ul className="divide-y divide-gray-200">
@@ -221,7 +231,7 @@ export default function PressureControlEdit() {
               </div>
               <span>
                 m<sup>3</sup>/h
-              </span>{" "}
+              </span>
             </div>
           </li>
 
@@ -314,38 +324,35 @@ export default function PressureControlEdit() {
           </h3>
           {/*  */}
           {Array.from({ length: 5 }).map((_, index) => (
-            <EditOption
-              key={index}
-              icon="Time"
-              title={`Giai đoạn ${index + 1}`}
-              description="Khung giờ: 0 giờ 0 phút | Góc quay: 0"
-              initialState={false}
-              onToggle={(newState) => {
-                console.log(
-                  `Trạng thái mới của khoảng ${index + 1}:`,
-                  newState
-                );
-              }}
-            />
+            <div key={`goc-quay-theo-thoi-gian-${index}`}>
+              <EditOption
+                icon="Time"
+                title={`Giai đoạn ${index + 1}`}
+                description="Khung giờ: 0 giờ 0 phút | Góc quay: 0"
+                initialState={false}
+                onToggle={(newState) =>
+                  handleGocQuayTheoThoiGian(index, newState)
+                }
+              />
+            </div>
           ))}
+
           {/* cai dat goc quay theo ap suat */}
           <h3 className="bg-gray-400 font-bold p-1">
             Cài đặt góc quay theo áp suất
           </h3>
           {Array.from({ length: 5 }).map((_, index) => (
-            <EditOption
-              key={index}
-              icon="Time"
-              title={`Khoảng cài đặt ${index + 1}`}
-              description="Khung giờ: 0 giờ 0 phút | Góc quay: 0"
-              initialState={false}
-              onToggle={(newState) => {
-                console.log(
-                  `Trạng thái mới của khoảng ${index + 1}:`,
-                  newState
-                );
-              }}
-            />
+            <div key={`goc-quay-theo-ap-suat-${index}`}>
+              <EditOption
+                icon="Time"
+                title={`Khoảng cài đặt ${index + 1}`}
+                description="Khung giờ: 0 giờ 0 phút | Góc quay: 0"
+                initialState={false}
+                onToggle={(newState) =>
+                  handleGocQuayTheoApSuat(index, newState)
+                }
+              />
+            </div>
           ))}
           {/* cai dat dong mo van theo ap suat */}
           <h3 className="bg-gray-400 font-bold p-1">
@@ -356,7 +363,7 @@ export default function PressureControlEdit() {
             title="Kích hoạt"
             initialState={false} // Mặc định trạng thái là "tắt"
             onToggle={(newState) => console.log("Trạng thái mới: ", newState)}
-          />{" "}
+          />
           <EditOption
             icon="Time"
             title="Cài đặt áp suất"
@@ -388,7 +395,7 @@ export default function PressureControlEdit() {
             title="Kích hoạt"
             initialState={false} // Mặc định trạng thái là "tắt"
             onToggle={(newState) => console.log("Trạng thái mới: ", newState)}
-          />{" "}
+          />
           <EditOption
             icon="Time"
             title="Cài đặt áp suất"
@@ -488,7 +495,7 @@ export default function PressureControlEdit() {
             title="Kích hoạt"
             initialState={false} // Mặc định trạng thái là "tắt"
             onToggle={(newState) => console.log("Trạng thái mới: ", newState)}
-          />{" "}
+          />
           <EditOption
             icon="Time"
             title="Cài đặt áp suất"
@@ -505,7 +512,14 @@ export default function PressureControlEdit() {
               onToggle={(newState) => console.log("Trạng thái mới: ", newState)}
             />
           ))}
-          {/* id tham chiếu pv < sp */}
+
+          {/* 
+          
+           id tham chiếu pv < sp
+          
+
+          
+          */}
           <div className="flex items-center bg-gray-400 ">
             <div className="flex items-center">
               <h3 className="font-bold p-1">
@@ -526,7 +540,7 @@ export default function PressureControlEdit() {
             title="Kích hoạt"
             initialState={false} // Mặc định trạng thái là "tắt"
             onToggle={(newState) => console.log("Trạng thái mới: ", newState)}
-          />{" "}
+          />
           <EditOption
             icon="Time"
             title="Cài đặt áp suất"

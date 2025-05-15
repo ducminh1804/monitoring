@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { RefreshCcw, Pencil, ChartCandlestick, BookText } from "lucide-react";
 import Spinner from "../../../../commons/Spinner";
+import val_on from "/svgs/val_on.svg";
+import val_off from "/svgs/val_off.svg";
 export default function PressureControlDetail() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -15,6 +17,22 @@ export default function PressureControlDetail() {
 
   const handleEdit = () => {
     navigate(`/main/devices/pressureControl/1/edit`);
+  };
+
+  const [valStatus, setValStatus] = useState({
+    val_1: false,
+    val_2: false,
+    val_3: false,
+    val_4: false,
+  });
+
+  // () de tra ve obj thay cho block scope
+  const handleVal = (id) => {
+    setValStatus((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+    console.log(valStatus);
   };
 
   return (
@@ -38,22 +56,21 @@ export default function PressureControlDetail() {
         </div>
       </div>
       <div className="flex justify-center mt-4 gap-2">
-        <div className="border w-full rounded  p-2 flex flex-col items-center gap-2">
-          <ChartCandlestick />
-          <span>Van 1 </span>
-        </div>
-        <div className="border w-full rounded  p-2 flex flex-col items-center gap-2">
-          <ChartCandlestick />
-          <span>Van 2 </span>
-        </div>
-        <div className="border w-full rounded  p-2 flex flex-col items-center gap-2">
-          <ChartCandlestick />
-          <span>Van 3 </span>
-        </div>
-        <div className="border w-full rounded  p-2 flex flex-col items-center gap-2">
-          <ChartCandlestick />
-          <span>Van 4 </span>
-        </div>
+        {Array.from({ length: 4 }).map((_, index) => (
+          <div
+            onClick={() => handleVal(`val_${index + 1}`)}
+            key={`val-${index}`}
+            className="border w-full rounded  p-2 flex flex-col items-center gap-2"
+          >
+            <div className="w-[80%] hover:cursor-pointer active:scale-95 transition-all">
+              <img
+                src={valStatus[`val_${index + 1}`] ? val_on : val_off}
+                alt=""
+              />
+            </div>
+            <span>Van {index} </span>
+          </div>
+        ))}
       </div>
 
       <div className="my-2">

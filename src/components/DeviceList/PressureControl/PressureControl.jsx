@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { RefreshCcw, Pencil, ChartCandlestick } from "lucide-react";
 import { useNavigate } from "react-router";
+import val_on from "/svgs/val_on.svg";
+import val_off from "/svgs/val_off.svg";
+
 export default function PressureControl() {
   const navigate = useNavigate();
 
@@ -8,6 +11,15 @@ export default function PressureControl() {
     console.log("object");
     navigate(`/main/devices/pressureControl/1`);
   };
+
+  const [valStatus, setValStatus] = useState({
+    val_1: false,
+    val_2: false,
+    val_3: false,
+    val_4: false,
+  });
+
+
 
   console.log("datalogger");
   return (
@@ -24,23 +36,22 @@ export default function PressureControl() {
           </button>
         </div>
       </div>
+
       <div className="flex justify-center mt-4 gap-2">
-        <div className="border w-full rounded  p-2 flex flex-col items-center gap-2">
-          <ChartCandlestick />
-          <span>Van 1 </span>
-        </div>
-        <div className="border w-full rounded  p-2 flex flex-col items-center gap-2">
-          <ChartCandlestick />
-          <span>Van 2 </span>
-        </div>
-        <div className="border w-full rounded  p-2 flex flex-col items-center gap-2">
-          <ChartCandlestick />
-          <span>Van 3 </span>
-        </div>
-        <div className="border w-full rounded  p-2 flex flex-col items-center gap-2">
-          <ChartCandlestick />
-          <span>Van 4 </span>
-        </div>
+        {Array.from({ length: 4 }).map((_, index) => (
+          <div
+            key={`val-${index}`}
+            className="border w-full rounded  p-2 flex flex-col items-center gap-2"
+          >
+            <div className="w-[80%] ">
+              <img
+                src={valStatus[`val_${index + 1}`] ? val_on : val_off}
+                alt=""
+              />
+            </div>
+            <span>Van {index+1} </span>
+          </div>
+        ))}
       </div>
 
       <div className="my-2">

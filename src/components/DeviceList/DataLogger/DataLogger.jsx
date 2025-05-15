@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { RefreshCcw, Pencil, ChartCandlestick } from "lucide-react";
 import { useNavigate } from "react-router";
+import val_off from "/svgs/val_off.svg";
+import val_on from "/svgs/val_on.svg";
+
 export default function DataLogger() {
   const navigate = useNavigate();
 
@@ -8,6 +11,8 @@ export default function DataLogger() {
     console.log("object");
     navigate(`/main/devices/dataLogger/2`);
   };
+
+  const [active, setActive] = useState(false);
 
   console.log("datalogger");
   return (
@@ -26,7 +31,9 @@ export default function DataLogger() {
       </div>
       <div className="flex justify-center mt-4 ">
         <div className="border w-full rounded  p-2 flex flex-col items-center gap-2">
-          <ChartCandlestick />
+          <div onClick={() => setActive((prev) => !prev)} className="w-[20%]">
+            <img src={active ? val_on : val_off} alt="" />
+          </div>
           <span>Lock/Clean </span>
         </div>
       </div>

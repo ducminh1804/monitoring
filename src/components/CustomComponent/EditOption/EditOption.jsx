@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import val_on from "/svgs/val_on.svg";
 export default function EditOption({
+  id,
   icon,
   title,
   description,
@@ -11,29 +12,27 @@ export default function EditOption({
   const toggle = () => {
     const newState = !enabled;
     setEnabled(newState);
-    onToggle?.(newState);
+    onToggle?.(id, newState);
   };
 
   return (
-    <div>
-      <li className="py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <div className="w-6 h-6 mr-2 text-blue-500">
-              {icon === "Time" && <Time />}
-              {icon === "Val" && <ValveOn />}
-            </div>
-            <div>
-              <span className="font-medium">{title}</span>
-              <p className="text-gray-500">{description}</p>
-            </div>
+    <div className="m-2 p-3">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center">
+          <div className="w-6 h-6 mr-2 text-blue-500">
+            {icon === "Time" && <Time />}
+            {icon === "Val" && <ValveOn />}
           </div>
-
-          <div onClick={toggle} className="cursor-pointer">
-            {enabled ? <SwitchOnIcon /> : <SwitchOffIcon />}
+          <div>
+            <span className="font-medium">{title}</span>
+            <p className="text-gray-500">{description}</p>
           </div>
         </div>
-      </li>
+
+        <div onClick={toggle} className="cursor-pointer">
+          {enabled ? <SwitchOnIcon /> : <SwitchOffIcon />}
+        </div>
+      </div>
     </div>
   );
 }
