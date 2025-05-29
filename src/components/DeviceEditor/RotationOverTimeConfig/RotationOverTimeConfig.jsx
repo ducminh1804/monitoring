@@ -26,7 +26,7 @@ export default function RotationOverTimeConfig() {
       {Array.from({ length: 5 }).map((_, index) => (
         <div key={`goc-quay-theo-thoi-gian-${index}`}>
           <EditOption
-            id={`goc-quay-theo-thoi-gian-${index}`}
+            id={`goc-quay-theo-thoi-gian-${index + 1}`}
             icon="Time"
             title={`Giai đoạn ${index + 1}`}
             description="Khung giờ: 0 giờ 0 phút | Góc quay: 0"
@@ -38,3 +38,8 @@ export default function RotationOverTimeConfig() {
     </div>
   );
 }
+// const handleGocQuayTheoThoiGian = (id, state) => {
+//   console.log(id);
+//   console.log("state:", state);
+// };
+// (id, newState)=> handleGocQuayTheoThoiGian(id, newState)

@@ -4,6 +4,7 @@ import Chart from "../Chart/Chart";
 import { convertToUnixTimestamp } from "../../utils/date";
 import { eachDayOfInterval, format } from "date-fns";
 import { Download } from "lucide-react";
+import LearnChart from "../LearnChart/LearnChart";
 export default function FileLoader() {
   const [result, setResult] = useState([]);
   const [startDate, setStartDate] = useState("");
@@ -75,26 +76,25 @@ export default function FileLoader() {
     setFilteredDevices([]); // Ẩn dropdown sau khi chọn
   };
 
-    const deviceList1 = ["TB1", "TB2", "TB3", "TB4"];
-    const [searchTerm1, setSearchTerm1] = useState("");
-    const [filteredDevices1, setFilteredDevices1] = useState([]);
-    const [selectedDevice1, setSelectedDevice1] = useState("");
+  const deviceList1 = ["TB1", "TB2", "TB3", "TB4"];
+  const [searchTerm1, setSearchTerm1] = useState("");
+  const [filteredDevices1, setFilteredDevices1] = useState([]);
+  const [selectedDevice1, setSelectedDevice1] = useState("");
 
-    const handleChange1 = (e) => {
-      const value = e.target.value;
-      setSearchTerm(value);
-      const filtered = deviceList.filter((device) =>
-        device.toLowerCase().includes(value.toLowerCase())
-      );
-      setFilteredDevices(filtered);
-    };
+  const handleChange1 = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    const filtered = deviceList.filter((device) =>
+      device.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredDevices(filtered);
+  };
 
-    const handleSelect1 = (device) => {
-      setSelectedDevice(device);
-      setSearchTerm(device);
-      setFilteredDevices([]); // Ẩn dropdown sau khi chọn
-    };
-
+  const handleSelect1 = (device) => {
+    setSelectedDevice(device);
+    setSearchTerm(device);
+    setFilteredDevices([]); // Ẩn dropdown sau khi chọn
+  };
 
   return (
     <div className="space-y-4">
@@ -184,7 +184,8 @@ export default function FileLoader() {
         </div>
       </div>
 
-      <Chart result={result} />
+      <LearnChart result={result} />
+      {/* <Chart result={result} /> */}
     </div>
   );
 }

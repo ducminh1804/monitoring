@@ -1,5 +1,5 @@
 import React from "react";
-import { useRoutes } from "react-router";
+import { Navigate, Outlet, useRoutes } from "react-router";
 import Login from "./pages/Login";
 import MainLayout from "./layouts/MainLayout/MainLayout";
 import Report from "./components/Report";
@@ -19,99 +19,128 @@ import WaterQualityInfo from "./components/DeviceList/WaterQuality/WaterQualityI
 import PressureControl from "./components/DeviceList/PressureControl/PressureControl";
 import PressureControlDetail from "./components/DeviceList/PressureControl/PressureControlDetail";
 import PressureControlEdit from "./components/DeviceList/PressureControl/PressureControlEdit";
-import File from "./components/File/File";
+import LearnChart from "./components/LearnChart/LearnChart";
+import Dashboard from "./components/Dashboard/Dashboard";
+import { useSelector } from "react-redux";
 export default function useRouteElement() {
   // "" dung trong children.
   // / duong dan tuyet doi, k ghep voi path cha
+
+  // const isAuthenticated = useSelector(state=> state.auth.isAuthenticated);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  // const isAuthenticated = false;
+
+  // ProtectedRoute dùng để bảo vệ các route chỉ dành cho người đã đăng nhập.
+  // Nếu người dùng chưa đăng nhập, nó sẽ chuyển hướng về trang /login.
+  function ProtectedRoute() {
+    return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
+  }
+
+  // Nếu người dùng đã đăng nhập, nó sẽ chuyển hướng về trang chính .
+  function RejectedRoute() {
+    return !isAuthenticated ? <Outlet /> : <Navigate to="/main/reports" />;
+  }
+
   const route = useRoutes([
     {
-      path: "/",
-      element: <MainLayout />,
+      path: "",
+      element: <ProtectedRoute />,
       children: [
         {
           path: "",
-          element: <ContentLayout />,
+          element: <MainLayout />,
           children: [
             {
-              path: "/main/reports",
-              element: <File />,
-            },
-            {
-              path: "main/devices",
+              path: "",
+              element: <ContentLayout />,
               children: [
                 {
-                  path: "",
-                  element: <DevicePage />,
+                  path: "/file",
+                  element: <LearnChart />,
                 },
                 {
-                  path: ":deviceType",
-                  element: <Test />,
+                  path: "/main/reports",
+                  element: <Dashboard />,
+                  // element: <File />,
                 },
                 {
-                  path: "pressureControl",
+                  path: "main/devices",
                   children: [
                     {
                       path: "",
-                      element: <PressureControl />,
+                      element: <DevicePage />,
                     },
                     {
-                      path: ":id",
-                      element: <PressureControlDetail />,
+                      path: ":deviceType",
+                      element: <Test />,
                     },
                     {
-                      path: ":id/edit",
-                      element: <PressureControlEdit />,
-                    },
-                  ],
-                },
-                {
-                  path: "valveBreaker",
-                  children: [
-                    {
-                      path: "",
-                      element: <ValveBreaker />,
-                    },
-                    {
-                      path: "edit",
-                      element: <ValveBreakerEdit />,
-                    },
-                  ],
-                },
-                {
-                  path: "dataLogger",
-                  children: [
-                    {
-                      path: "",
-                      element: <DataLogger />,
+                      path: "pressureControl",
+                      children: [
+                        {
+                          path: "",
+                          element: <PressureControl />,
+                        },
+                        {
+                          path: ":id",
+                          element: <PressureControlDetail />,
+                        },
+                        {
+                          path: ":id/edit",
+                          element: <PressureControlEdit />,
+                        },
+                      ],
                     },
                     {
-                      path: ":id",
-                      element: <DataLoggerDetail />,
+                      path: "valveBreaker",
+                      children: [
+                        {
+                          path: "",
+                          element: <ValveBreaker />,
+                        },
+                        {
+                          path: "edit",
+                          element: <ValveBreakerEdit />,
+                        },
+                      ],
                     },
                     {
-                      path: ":id/edit",
-                      element: <DataLoggerEdit />,
-                    },
-                  ],
-                },
-                {
-                  path: "waterQuality",
-                  children: [
-                    {
-                      path: "",
-                      element: <WaterQuality />,
-                    },
-                    {
-                      path: ":id",
-                      element: <WaterQualityDetail />,
-                    },
-                    {
-                      path: ":id/info",
-                      element: <WaterQualityInfo />,
+                      path: "dataLogger",
+                      children: [
+                        {
+                          path: "",
+                          element: <DataLogger />,
+                        },
+                        {
+                          path: ":id",
+                          element: <DataLoggerDetail />,
+                        },
+                        {
+                          path: ":id/edit",
+                          element: <DataLoggerEdit />,
+                        },
+                      ],
                     },
                     {
-                      path: ":id/edit",
-                      element: <WaterQualityEdit />,
+                      path: "waterQuality",
+                      children: [
+                        {
+                          path: "",
+                          element: <WaterQuality />,
+                        },
+                        {
+                          path: ":id",
+                          element: <WaterQualityDetail />,
+                        },
+                        {
+                          path: ":id/info",
+                          element: <WaterQualityInfo />,
+                        },
+                        {
+                          path: ":id/edit",
+                          element: <WaterQualityEdit />,
+                        },
+                      ],
                     },
                   ],
                 },
@@ -121,23 +150,25 @@ export default function useRouteElement() {
         },
       ],
     },
+    // {
+    //   path: "/login",
+    //   element: <Login />,
+    // },
     {
-      path: "/auth/login",
-      element: <Login />,
+      path: "",
+      element: <RejectedRoute />,
+      children: [
+        {
+          path: "login",
+          element: <Login />,
+        },
+      ],
     },
-    {
-      path: "/file",
-      element: <File />,
-    },
+    // {
+    //   path: "/file",
+    //   element: <LearnChart />,
+    // },
   ]);
 
   return route;
 }
-// {
-//               path: "/main/devices/pressureControl",
-//               element: <PressureControl />,
-//             },
-//             {
-//               path: "/main/devices/dataLogger",
-//               element: <DataLogger />,
-//             },

@@ -2,6 +2,7 @@ import React from "react";
 import ActiveBtn from "../../../../commons/ActiveBtn";
 import { LocationEdit, Link } from "lucide-react";
 import EditOption from "../../../CustomComponent/EditOption/EditOption";
+import { useParams } from "react-router";
 export default function PressureControlEdit() {
   const handleGocQuayTheoThoiGian = (key, state) => {
     console.log("goc-quay-theo-thoi-gian:", key);
@@ -13,6 +14,8 @@ export default function PressureControlEdit() {
     console.log("state:", state);
   };
 
+  const {id} = useParams()
+  console.log(id)
   return (
     <div>
       <ul className="divide-y divide-gray-200">
@@ -100,12 +103,12 @@ export default function PressureControlEdit() {
                   type="text"
                   defaultValue={11}
                 />
-
                 <Link />
               </div>
             </div>
           </div>
         </li>
+        
         <EditOption
           icon="Clock"
           title="Đồng bộ RTC cho module"

@@ -3,19 +3,18 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../../commons/Loading/Loading";
 import "./style.css";
 import Spinner from "../../commons/Spinner";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/slices/AuthSlice";
 export default function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted");
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      console.log("object");
-      navigate("/main/reports");
-    }, 2000);
+
+    dispatch(login());
+    
+    navigate("/main/reports");
   };
 
   return (
@@ -73,7 +72,6 @@ export default function Login() {
           </form>
         </div>
         <div className="text-center text-gray-500 text-xs">
-          DESIGN & DEVELOPED BY QKIT SOFTWARE.
           <br />© 2023 FD SOFTWARE CO, LTD. ALL RIGHTS RESERVED.
         </div>
       </div>

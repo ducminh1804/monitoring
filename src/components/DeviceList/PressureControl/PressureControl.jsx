@@ -6,6 +6,7 @@ import val_off from "/svgs/val_off.svg";
 
 export default function PressureControl() {
   const navigate = useNavigate();
+  
 
   const handleClick = () => {
     console.log("object");
