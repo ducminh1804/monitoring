@@ -1,6 +1,7 @@
 import { data } from "./data";
 
 export const renderChart = () => {
+  // document:   https://echarts.apache.org/en/option.html#title
   const latestTime = data[data.length - 1]?.time;
   // console.log(latestTime);
   return {

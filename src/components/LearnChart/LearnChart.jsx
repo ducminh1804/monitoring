@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import { renderChart } from "./optionChart";
 import * as echarts from "echarts";
-import useMqttClient from "../../services/useMqqtClient";
+// import useMqttClient from "../../services/useMqqtClient";
 export default function LearnChart({ data }) {
-  // console.log(data);
+  // ham renderchart nam trong file optionChart.js, ngay ben duoi
   const chart = renderChart(data);
+
   // console.log(chart);
   const chartRef = useRef(null);
 
@@ -18,22 +19,22 @@ export default function LearnChart({ data }) {
     };
   }, []);
 
-  const { client, mqttConnect, subscribe, payload } =
-    useMqttClient();
+  // const { client, mqttConnect, subscribe, payload } =
+  //   useMqttClient();
 
-  useEffect(() => {
-    mqttConnect("ws://broker.hivemq.com:8000/mqtt", {
-      clientId: "mqttjs_" + Math.random().toString(16).substr(2, 8),
-    });
-  }, []);
+  // useEffect(() => {
+  //   mqttConnect("ws://broker.hivemq.com:8000/mqtt", {
+  //     clientId: "mqttjs_" + Math.random().toString(16).substr(2, 8),
+  //   });
+  // }, []);
 
-  useEffect(() => {
-    subscribe("quyen");
-  }, [client]);
+  // useEffect(() => {
+  //   subscribe("quyen");
+  // }, [client]);
 
-  useEffect(() => {
-    console.log(payload);
-  }, [payload]);
+  // useEffect(() => {
+  //   console.log(payload);
+  // }, [payload]);
 
   return (
     <div>

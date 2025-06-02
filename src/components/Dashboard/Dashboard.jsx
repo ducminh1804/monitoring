@@ -1,11 +1,14 @@
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
 import LearnChart from "../LearnChart/LearnChart";
 import { useDispatch } from "react-redux";
-import { login, logout } from "../../redux/slices/AuthSlice";
+import { logout } from "../../redux/slices/AuthSlice";
 
 export default function Dashboard() {
   const [data, setData] = useState([]);
+
+  // document:   docs.sheetjs.com/docs/getting-started/examples/import
+
   // k dc dung async trong useEffect
   useEffect(() => {
     const loadExcel = async () => {
@@ -23,10 +26,10 @@ export default function Dashboard() {
   }, []);
   // console.log(data);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const handleLogin = () => {
-    dispatch(logout())
-  }
+    dispatch(logout());
+  };
   return (
     <div>
       <button onClick={handleLogin}>click</button>
