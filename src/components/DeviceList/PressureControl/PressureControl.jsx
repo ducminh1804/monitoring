@@ -21,10 +21,9 @@ export default function PressureControl() {
   });
 
 
-
   console.log("datalogger");
   return (
-    <div className="w-[80%] border p-2">
+    <div className="md:w-[80%] border p-2 rounded">
       <div>
         <div className="flex justify-between items-center my-1 border rounded p-2">
           <h1>1446 Valve Breaker</h1>

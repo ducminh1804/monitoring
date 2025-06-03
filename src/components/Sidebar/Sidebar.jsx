@@ -1,11 +1,64 @@
 import classNames from "classnames";
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router";
 
 export default function Sidebar() {
+  const [open, setOpen] = useState(false);
   return (
-    <div>
-      <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
+    <>
+      <button
+        className="md:hidden  bg-white p-2 rounded shadow"
+        onClick={() => setOpen(true)}
+        aria-label="Open sidebar"
+      >
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+
+
+      {/* Sidebar */}
+      <div
+        className={classNames(
+          "fixed z-50 top-0 left-0 h-full w-64 bg-white transition-transform duration-300",
+          {
+            "shadow-2xl": open,
+            "-translate-x-full md:translate-x-0": !open,
+            "translate-x-0": open,
+          },
+          "md:static md:shadow-none md:block" // trên desktop luôn hiện
+        )}
+      >
+        {/* Nút đóng sidebar trên mobile */}
+        <button
+          className="md:hidden p-2 absolute top-2 right-2"
+          onClick={() => setOpen(false)}
+          aria-label="Close sidebar"
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
         <div className="mb-2 p-4">
           <h5 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-gray-900">
             Material Tailwind
@@ -81,6 +134,6 @@ export default function Sidebar() {
           </div>
         </nav>
       </div>
-    </div>
+    </>
   );
 }

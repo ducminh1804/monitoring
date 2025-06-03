@@ -36,7 +36,7 @@ export default function PressureControlDetail() {
   };
 
   return (
-    <div className="w-[80%] border p-2">
+    <div className="md:w-[80%] border p-2">
       <div className="flex justify-between items-center ">
         <h1>1008</h1>
         <div
