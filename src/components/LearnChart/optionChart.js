@@ -1,8 +1,11 @@
+import { useEffect } from "react";
 import { data } from "./data";
 
 export const renderChart = () => {
   // document:   https://echarts.apache.org/en/option.html#title
   const latestTime = data[data.length - 1]?.time;
+  const width = window.innerWidth;
+
   // console.log(latestTime);
   return {
     title: {
@@ -13,9 +16,10 @@ export const renderChart = () => {
       trigger: "axis",
     },
     grid: {
-      left: "10%",
+      // left: "40%",
       right: "15%",
       bottom: "10%",
+      left: `${width > 768 ? "10%" : "25%"}`,
     },
     toolbox: {
       right: 10,

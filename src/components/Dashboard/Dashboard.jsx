@@ -24,7 +24,7 @@ export default function Dashboard() {
     };
     loadExcel();
   }, []);
-  // console.log(data);
+  console.log(data);
 
   const dispatch = useDispatch();
   const handleLogin = () => {

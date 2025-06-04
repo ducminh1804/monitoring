@@ -7,7 +7,7 @@ export default function Sidebar() {
   return (
     <>
       <button
-        className="md:hidden  bg-white p-2 rounded shadow"
+        className="md:hidden bg-white p-2 rounded shadow"
         onClick={() => setOpen(true)}
         aria-label="Open sidebar"
       >
@@ -26,17 +26,15 @@ export default function Sidebar() {
         </svg>
       </button>
 
-
       {/* Sidebar */}
       <div
         className={classNames(
-          "fixed z-50 top-0 left-0 h-full w-64 bg-white transition-transform duration-300",
+          "fixed z-1 top-0 left-0 h-full w-60 bg-white duration-300 md:static ",
           {
             "shadow-2xl": open,
             "-translate-x-full md:translate-x-0": !open,
-            "translate-x-0": open,
-          },
-          "md:static md:shadow-none md:block" // trên desktop luôn hiện
+            // "translate-x-0": open,
+          }
         )}
       >
         {/* Nút đóng sidebar trên mobile */}

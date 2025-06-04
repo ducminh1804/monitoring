@@ -8,6 +8,8 @@ export default function EditOption({
   initialState = false,
   onToggle,
 }) {
+
+  
   const [enabled, setEnabled] = useState(initialState);
   const toggle = () => {
     const newState = !enabled;

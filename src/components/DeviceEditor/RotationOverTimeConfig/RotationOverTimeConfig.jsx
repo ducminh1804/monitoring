@@ -4,14 +4,14 @@ import Switch from "../../CustomComponent/Switch/Switch";
 
 export default function RotationOverTimeConfig() {
   const handleGocQuayTheoThoiGian = (id, state) => {
-    console.log(id);
-    console.log("state:", state);
+    // console.log(id);
+    // console.log("state:", state);
   };
 
   const [state, setState] = useState(false);
   const handleActive = (active) => {
     setState(active);
-    console.log("state", state);
+    // console.log("state", state);
   };
 
   return (
