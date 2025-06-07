@@ -101,7 +101,7 @@ export default function useRouteElement() {
                           element: <ValveBreakerDetail />,
                         },
                         {
-                          path: "edit",
+                          path: ":id/edit",
                           element: <ValveBreakerEdit />,
                         },
                       ],

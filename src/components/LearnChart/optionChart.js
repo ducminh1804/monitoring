@@ -3,7 +3,6 @@ import { data } from "./data";
 
 export const renderChart = () => {
   // document:   https://echarts.apache.org/en/option.html#title
-  const latestTime = data[data.length - 1]?.time;
   const width = window.innerWidth;
 
   // console.log(latestTime);
@@ -55,6 +54,21 @@ export const renderChart = () => {
         name: "Velocity",
         position: "left",
         offset: 0,
+        axisLine: {
+          lineStyle: {
+            color: "#FAC858",
+          },
+        },
+        nameTextStyle: {
+          color: "#FAC858", // màu chữ tên trục
+          fontSize: 12,
+          fontWeight: "bold",
+        },
+        axisLabel: {
+          marginLeft: 5,
+          fontSize: 12,
+          fontWeight: "bold",
+        },
       },
       {
         type: "value",
@@ -66,14 +80,14 @@ export const renderChart = () => {
             color: "rgba(225, 11, 11, 1)",
           },
         },
-        axisLabel: {
-          marginLeft: 5,
-          fontSize: 16,
-          fontWeight: "bold",
-        },
         nameTextStyle: {
           color: "rgba(225, 11, 11, 1)", // màu chữ tên trục
-          fontSize: 14,
+          fontSize: 12,
+          fontWeight: "bold",
+        },
+        axisLabel: {
+          marginLeft: 5,
+          fontSize: 12,
           fontWeight: "bold",
         },
       },

@@ -34,7 +34,7 @@ export default function ValveBreaker(props) {
   };
 
   const handleEdit = () => {
-    navigate(`/main/devices/pressureControl/${id}/edit`);
+    navigate(`/main/devices/valveBreaker/${id}/edit`);
   };
   return (
     <div className="md:w-[80%] w-[80%] mx-auto p-6 bg-white border border-gray-300 rounded-lg shadow-md">
