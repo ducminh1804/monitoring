@@ -28,7 +28,7 @@ export default function PressureControl(props) {
   };
 
   const handleEdit = () => {
-    navigate(`/main/devices/pressureControl/1/edit`);
+    navigate(`/main/devices/pressureControl/${data.id}/edit`);
   };
 
   const [valStatus, setValStatus] = useState({
@@ -56,11 +56,11 @@ export default function PressureControl(props) {
               </button>
             </div>
           ) : (
-            <div className="flex justify-between items-center ">
-              <h1>1008</h1>
+            <div className="relative flex justify-between items-center border rounded p-2">
+              <h1>10085444848484848484</h1>
               <div
                 onClick={handleConnect}
-                className="border rounded ml-30 flex gap-2 items-center cursor-pointer hover:bg-gray-200 p-2 rounded-md"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border rounded flex gap-2 items-center cursor-pointer hover:bg-gray-200 p-2 rounded-md"
               >
                 {loading ? <Spinner /> : <RefreshCcw />}
                 <span>call</span>

@@ -17,6 +17,10 @@ export default function PressureControlList() {
       ReserveFlow: 4,
       UserSpan: 5,
       LowPowerMetter: false,
+      Val_1: 0,
+      Val_2: 1,
+      Val_3: 0,
+      Val_4: 1,
     },
     {
       id: 2,
@@ -32,6 +36,10 @@ export default function PressureControlList() {
       ReserveFlow: 6,
       UserSpan: 7,
       LowPowerMetter: true,
+      Val_1: 0,
+      Val_2: 0,
+      Val_3: 1,
+      Val_4: 0,
     },
     {
       id: 3,
@@ -47,6 +55,10 @@ export default function PressureControlList() {
       ReserveFlow: 4,
       UserSpan: 6,
       LowPowerMetter: false,
+      Val_1: 1,
+      Val_2: 0,
+      Val_3: 1,
+      Val_4: 0,
     },
   ];
 

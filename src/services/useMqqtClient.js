@@ -56,7 +56,7 @@ export default function useMqttClient() {
       });
 
       client.on("message", (topic, message) => {
-          setPayload(message.toString());
+        setPayload(message.toString());
       });
     }
 

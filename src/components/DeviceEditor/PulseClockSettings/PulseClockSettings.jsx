@@ -6,7 +6,7 @@ export default function PulseClockSettings() {
   const [state, setState] = useState(false);
   const handleActive = (id, newState) => {
     setState(newState);
-    // console.log(id, newState);
+    console.log(id, newState);
   };
 
   return (

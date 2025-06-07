@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { renderChart } from "./optionChart";
 import * as echarts from "echarts";
 // import useMqttClient from "../../services/useMqqtClient";
+// import useMqttClient from "../../services/useMqqtClient";
 export default function LearnChart({ data }) {
   // ham renderchart nam trong file optionChart.js, ngay ben duoi
   const chart = renderChart(data);
