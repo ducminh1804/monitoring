@@ -25,10 +25,8 @@ export default function PressureControl(props) {
   };
   const location = useLocation();
   const data = location.state || {};
-  console.log("data",data)
+  console.log("data", data);
   console.log("id", data.id);
-
-
 
   const handleEdit = () => {
     navigate(`/main/devices/pressureControl/${data.id}/edit`);

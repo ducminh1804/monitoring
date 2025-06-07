@@ -52,10 +52,10 @@ export default function useRouteElement() {
               path: "",
               element: <ContentLayout />,
               children: [
-                {
-                  path: "/file",
-                  element: <LearnChart />,
-                },
+                // {
+                //   path: "/file",
+                //   element: <LearnChart />,
+                // },
                 {
                   path: "/main/reports",
                   element: <Dashboard />,

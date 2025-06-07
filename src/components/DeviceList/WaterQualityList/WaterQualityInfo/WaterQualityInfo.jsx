@@ -136,9 +136,9 @@ export default function WaterQualityInfo() {
           </div>
         </div>
 
-        <div className="flex justify-center mt-2 space-x-4">
-          {/* Lựa chọn ngày bắt đầu và ngày kết thúc */}
-          <div className="flex items-center space-x-2">
+        <div className="flex flex-col md:flex-row justify-center mt-2 space-y-4 md:space-y-0 md:space-x-4">
+          {/* Dòng chọn ngày */}
+          <div className="flex items-center justify-center space-x-2">
             <input
               type="date"
               className="px-3 py-1 border border-gray-300 rounded-md"
@@ -148,36 +148,36 @@ export default function WaterQualityInfo() {
             <input
               type="date"
               className="px-3 py-1 border border-gray-300 rounded-md"
-              defaultValue={new Date().toISOString().split("T")[0]} // Set ngày mặc định là hôm nay
+              defaultValue={new Date().toISOString().split("T")[0]}
               onChange={(e) => console.log("Ngày bắt đầu:", e.target.value)}
             />
           </div>
-          {/* Nút "Xem" */}
-          <button
-            className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-1 rounded-full shadow-md"
-            onClick={() => {
-              // TODO: Thêm logic truy xuất dữ liệu ở đây
-              console.log(
-                "Đang truy xuất:",
-                selectedParams,
-                "Kiểu:",
-                averageType
-              );
-            }}
-          >
-            Xem
-          </button>
 
-          {/* Nút "Tải về" */}
-          <button
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-1 rounded-full shadow-md"
-            onClick={() => {
-              // TODO: Logic tải về dữ liệu
-              console.log("Đang tải về dữ liệu...");
-            }}
-          >
-            Tải về
-          </button>
+          {/* Dòng các nút */}
+          <div className="flex justify-center space-x-4">
+            <button
+              className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-1 rounded-full shadow-md"
+              onClick={() => {
+                console.log(
+                  "Đang truy xuất:",
+                  selectedParams,
+                  "Kiểu:",
+                  averageType
+                );
+              }}
+            >
+              Xem
+            </button>
+
+            <button
+              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-1 rounded-full shadow-md"
+              onClick={() => {
+                console.log("Đang tải về dữ liệu...");
+              }}
+            >
+              Tải về
+            </button>
+          </div>
         </div>
       </div>
     </div>
