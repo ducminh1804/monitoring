@@ -6,13 +6,16 @@ import { logout } from "../../redux/slices/AuthSlice";
 
 export default function Dashboard() {
   const [data, setData] = useState([]);
-
   // document:   docs.sheetjs.com/docs/getting-started/examples/import
 
   // k dc dung async trong useEffect
   useEffect(() => {
+    // b1. load file
+    // b2. chuyển đổi dữ liệu sang json
+    // b3. set dữ liệu vào state
     const loadExcel = async () => {
       const url = "/excels/2025-04-01.xlsx";
+
       const arrayBuffer = await (await fetch(url)).arrayBuffer();
       const workbook = XLSX.read(arrayBuffer, {
         type: "array",
@@ -20,11 +23,13 @@ export default function Dashboard() {
       });
       var first_sheet = workbook.Sheets[workbook.SheetNames[0]];
       const jsonData = XLSX.utils.sheet_to_json(first_sheet, { raw: false });
+
       setData(jsonData);
     };
+
     loadExcel();
   }, []);
-  console.log(data);
+  // console.log(data);
 
   const dispatch = useDispatch();
   const handleLogin = () => {

@@ -1,16 +1,21 @@
 import React, { useEffect, useRef } from "react";
 import { renderChart } from "./optionChart";
 import * as echarts from "echarts";
+import { dataSample } from "./data";
 // import useMqttClient from "../../services/useMqqtClient";
 // import useMqttClient from "../../services/useMqqtClient";
 export default function LearnChart({ data }) {
+  console.log("data", data);
+  console.log("dataSample", dataSample);
+
   // ham renderchart nam trong file optionChart.js, ngay ben duoi
-  const chart = renderChart(data);
+  // const chart = renderChart(data);
 
   // console.log(chart);
   const chartRef = useRef(null);
 
   useEffect(() => {
+    const chart = renderChart(data);
     const chartInstance = echarts.init(chartRef.current, "", {
       renderer: "canvas",
     });
@@ -18,7 +23,7 @@ export default function LearnChart({ data }) {
     return () => {
       chartInstance.dispose();
     };
-  }, []);
+  }, [data]);
 
   // const { client, mqttConnect, subscribe, payload } =
   //   useMqttClient();

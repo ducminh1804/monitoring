@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { data } from "./data";
+import { dataSample } from "./data";
 
-export const renderChart = () => {
+export const renderChart = (data) => {
   // document:   https://echarts.apache.org/en/option.html#title
   const width = window.innerWidth;
 

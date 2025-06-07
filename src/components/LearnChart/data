@@ -1,4 +1,4 @@
-export const data = [
+export const dataSample = [
   {
     time: "1/4/25 0:00",
     "Pressure In": "2.47",
