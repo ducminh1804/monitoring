@@ -6,7 +6,6 @@ import DevicePage from "./pages/DevicePage";
 import Test from "./components/Test/Test";
 import ValveBreaker from "./components/DeviceList/ValveBreakerList/ValveBreaker";
 import ValveBreakerEdit from "./components/DeviceList/ValveBreakerList/ValveBreakerEdit/ValveBreakerEdit";
-import WaterQuality from "./components/DeviceList/WaterQualityList/WaterQuality";
 import WaterQualityEdit from "./components/DeviceList/WaterQualityList/WaterQualityEdit";
 import DataLoggerEdit from "./components/DeviceList/DataLoggerList/DataLoggerEdit/DataLoggerEdit";
 import DataLoggerDetail from "./components/DeviceList/DataLoggerList/DataLoggerDetail/DataLoggerDetail";
@@ -14,12 +13,13 @@ import WaterQualityDetail from "./components/DeviceList/WaterQualityList/WaterQu
 import WaterQualityInfo from "./components/DeviceList/WaterQualityList/WaterQualityInfo/WaterQualityInfo";
 import PressureControlDetail from "./components/DeviceList/PressureControlList/PressureControlDetail";
 import PressureControlEdit from "./components/DeviceList/PressureControlList/PressureControlEdit";
-import LearnChart from "./components/LearnChart/LearnChart";
 import Dashboard from "./components/Dashboard/Dashboard";
 import { useSelector } from "react-redux";
 import PressureControlList from "./components/DeviceList/PressureControlList/PressureControlList";
 import DataLoggerList from "./components/DeviceList/DataLoggerList";
 import WaterQualityList from "./components/DeviceList/WaterQualityList/WaterQualityList";
+import ValveBreakerList from "./components/DeviceList/ValveBreakerList";
+import ValveBreakerDetail from "./components/DeviceList/ValveBreakerList/ValveBreakerDetail/ValveBreakerDetail";
 export default function useRouteElement() {
   // "" dung trong children.
   // / duong dan tuyet doi, k ghep voi path cha
@@ -94,7 +94,11 @@ export default function useRouteElement() {
                       children: [
                         {
                           path: "",
-                          element: <ValveBreaker />,
+                          element: <ValveBreakerList />,
+                        },
+                        {
+                          path: ":id",
+                          element: <ValveBreakerDetail />,
                         },
                         {
                           path: "edit",
@@ -107,7 +111,7 @@ export default function useRouteElement() {
                       children: [
                         {
                           path: "",
-                          element: <DataLoggerList/>,
+                          element: <DataLoggerList />,
                         },
                         {
                           path: ":id",

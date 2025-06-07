@@ -1,3 +1,3 @@
-import ValveBreaker from "./ValveBreaker";
+import ValveBreakerList from "./ValveBreakerList";
 
-export default ValveBreaker
+export default ValveBreakerList;
