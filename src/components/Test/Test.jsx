@@ -5,10 +5,12 @@ import ValveControlByPressure from "../DeviceEditor/ValveControlByPressure";
 import AutoByPressureConfig from "../DeviceEditor/AutoByPressureConfig/AutoByPressureConfig";
 import RotationRefByPressure from "../DeviceEditor/RotationRefByPressure";
 import ValveByPressureRef from "../DeviceEditor/ValveByPressureRef/ValveByPressureRef";
+import BaseConfig from "../DeviceEditor/BaseConfig";
 export default function Test() {
   return (
     <div>
       {/* <Switch id="tb1" /> */}
+      <BaseConfig />
       <PulseClockSettings />
       <RotationOverTimeConfig />
       <RotationByPressureConfig />

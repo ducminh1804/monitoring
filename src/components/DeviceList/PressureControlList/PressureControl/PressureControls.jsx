@@ -7,7 +7,6 @@ import { Pencil, RefreshCcw } from "lucide-react";
 
 export default function PressureControl(props) {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
 
   const handleClick = () => {
     console.log("object");
@@ -16,9 +15,7 @@ export default function PressureControl(props) {
     });
   };
 
-  const location = useLocation();
-  const data = location.state || {};
-  console.log("id", data.id);
+  const [loading, setLoading] = useState(false);
 
   const handleConnect = () => {
     setLoading(true);
@@ -26,6 +23,12 @@ export default function PressureControl(props) {
       setLoading(false);
     }, 2000);
   };
+  const location = useLocation();
+  const data = location.state || {};
+  console.log("data",data)
+  console.log("id", data.id);
+
+
 
   const handleEdit = () => {
     navigate(`/main/devices/pressureControl/${data.id}/edit`);

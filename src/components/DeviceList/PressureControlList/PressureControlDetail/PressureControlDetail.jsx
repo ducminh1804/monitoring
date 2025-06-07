@@ -10,21 +10,6 @@ export default function PressureControlDetail() {
   const data = location.state || {};
   console.log("id", data.id);
 
-  // const [valStatus, setValStatus] = useState({
-  //   val_1: false,
-  //   val_2: false,
-  //   val_3: false,
-  //   val_4: false,
-  // });
-
-  // // () de tra ve obj thay cho block scope
-  // const handleVal = (id) => {
-  //   setValStatus((prev) => ({
-  //     ...prev,
-  //     [id]: !prev[id],
-  //   }));
-  //   console.log(valStatus);
-  // };
 
   return (
     <div className="mb-2">
