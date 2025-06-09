@@ -37,7 +37,7 @@ export default function ValveBreaker(props) {
     navigate(`/main/devices/valveBreaker/${id}/edit`);
   };
   return (
-    <div className="md:w-[80%] w-[80%] mx-auto p-6 bg-white border border-gray-300 rounded-lg shadow-md">
+    <div className="md:w-[80%]  mx-auto p-6 bg-white border border-gray-300 rounded-lg shadow-md">
       <div>
         {!id ? (
           <div className="flex justify-between items-center my-1 border rounded p-2">
@@ -52,21 +52,23 @@ export default function ValveBreaker(props) {
           </div>
         ) : (
           <div className="relative flex justify-between items-center border rounded p-2">
-            <h1>10085444848484848484</h1>
-            <div
-              onClick={handleConnect}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border rounded flex gap-2 items-center cursor-pointer hover:bg-gray-200 p-2 rounded-md"
-            >
-              {loading ? <Spinner /> : <RefreshCcw />}
-              <span>call</span>
-              <span className="">1:15</span>
-            </div>
+            <h1>10085444</h1>
+            <div className="flex items-center gap-2">
+              <div
+                onClick={handleConnect}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border rounded flex gap-2 items-center cursor-pointer hover:bg-gray-200 p-2 rounded-md"
+              >
+                {loading ? <Spinner /> : <RefreshCcw />}
+                <span>call</span>
+                <span className="">1:15</span>
+              </div>
 
-            <div
-              onClick={handleEdit}
-              className="cursor-pointer active:scale-95 transition-all border border-gray-300 hover:border-blue-500 p-2 rounded"
-            >
-              <Pencil />
+              <div
+                onClick={handleEdit}
+                className="cursor-pointer active:scale-95 transition-all border border-gray-300 hover:border-blue-500 p-2 rounded"
+              >
+                <Pencil />
+              </div>
             </div>
           </div>
         )}

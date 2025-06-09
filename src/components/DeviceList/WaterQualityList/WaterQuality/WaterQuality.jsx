@@ -34,7 +34,6 @@ export default function WaterQuality(props) {
     navigate(`/main/devices/waterQuality/${id}/info`);
   };
 
-
   const [valStatus, setValStatus] = useState({
     val_1: false,
     val_2: false,
