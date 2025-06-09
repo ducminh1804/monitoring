@@ -42,7 +42,7 @@ function AddDevice() {
     console.log("ID thiết bị:", deviceId);
 
     saveDevice(deviceType, deviceName, deviceId);
-    navigate("/main/devices");
+    navigate("/devices");
   };
 
   return (

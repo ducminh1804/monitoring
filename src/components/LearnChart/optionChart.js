@@ -8,7 +8,7 @@ export const renderChart = (data) => {
   // console.log(latestTime);
   return {
     title: {
-      text: "Chart",
+      // text: "Chart",
       left: "1%",
     },
     tooltip: {
@@ -45,9 +45,45 @@ export const renderChart = (data) => {
     yAxis: [
       {
         type: "value",
-        name: "Pressure",
+        name: "Pressure In",
         position: "right",
         offset: 0,
+        axisLine: {
+          lineStyle: {
+            color: "#6982CD",
+          },
+        },
+        nameTextStyle: {
+          color: "#6982CD", // màu chữ tên trục
+          fontSize: 12,
+          fontWeight: "bold",
+        },
+        axisLabel: {
+          marginLeft: 5,
+          fontSize: 12,
+          fontWeight: "bold",
+        },
+      },
+      {
+        type: "value",
+        name: "Pressure Out",
+        position: "right",
+        offset: 80,
+        axisLine: {
+          lineStyle: {
+            color: "#A4E287",
+          },
+        },
+        nameTextStyle: {
+          color: "#A4E287", // màu chữ tên trục
+          fontSize: 12,
+          fontWeight: "bold",
+        },
+        axisLabel: {
+          marginLeft: 5,
+          fontSize: 12,
+          fontWeight: "bold",
+        },
       },
       {
         type: "value",
@@ -103,19 +139,19 @@ export const renderChart = (data) => {
         name: "Pressure Out",
         type: "line",
         encode: { x: "time", y: "Pressure Out" },
-        yAxisIndex: 0,
+        yAxisIndex: 1,
       },
       {
         name: "Velocity",
         type: "line",
         encode: { x: "time", y: "Velocity" },
-        yAxisIndex: 1,
+        yAxisIndex: 2,
       },
       {
         name: "Flow Rate",
         type: "line",
         encode: { x: "time", y: "Flow Rate" },
-        yAxisIndex: 2,
+        yAxisIndex: 3,
       },
     ],
   };

@@ -36,7 +36,7 @@ export default function useRouteElement() {
 
   // Nếu người dùng đã đăng nhập, nó sẽ chuyển hướng về trang chính .
   function RejectedRoute() {
-    return !isAuthenticated ? <Outlet /> : <Navigate to="/main/reports" />;
+    return !isAuthenticated ? <Outlet /> : <Navigate to="/reports" />;
   }
 
   const route = useRoutes([
@@ -57,12 +57,12 @@ export default function useRouteElement() {
                 //   element: <LearnChart />,
                 // },
                 {
-                  path: "/main/reports",
+                  path: "/reports",
                   element: <Dashboard />,
                   // element: <File />,
                 },
                 {
-                  path: "main/devices",
+                  path: "devices",
                   children: [
                     {
                       path: "",

@@ -6,7 +6,7 @@ export default function DeviceType({ name, type, color, isActive }) {
 
   const handleClick = () => {
     // Điều hướng đến trang danh sách thiết bị theo deviceId
-    navigate(`/main/devices/${type}`);
+    navigate(`/devices/${type}`);
     console.log("click")
     console.log(type)
     

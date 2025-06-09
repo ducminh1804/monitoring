@@ -10,7 +10,7 @@ export default function DataLogger(props) {
 
   const handleClick = () => {
     console.log("object");
-    navigate(`/main/devices/dataLogger/${props.data.id}`, {
+    navigate(`/devices/dataLogger/${props.data.id}`, {
       state: props.data,
     });
   };
@@ -31,7 +31,7 @@ export default function DataLogger(props) {
   // const id = location.state?.id;
   // console.log(id);
   const handleEdit = () => {
-    navigate(`/main/devices/dataLogger/${data.id}/edit`);
+    navigate(`/devices/dataLogger/${data.id}/edit`);
   };
   return (
     <div className="md:w-[80%]  border p-2">

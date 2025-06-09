@@ -12,7 +12,7 @@ export default function ValveBreaker(props) {
   console.log(id);
   const handleClick = () => {
     console.log("object");
-    navigate(`/main/devices/valveBreaker/${props.data.id}`, {
+    navigate(`/devices/valveBreaker/${props.data.id}`, {
       state: props.data,
     });
   };
@@ -34,7 +34,7 @@ export default function ValveBreaker(props) {
   };
 
   const handleEdit = () => {
-    navigate(`/main/devices/valveBreaker/${id}/edit`);
+    navigate(`/devices/valveBreaker/${id}/edit`);
   };
   return (
     <div className="md:w-[80%]  mx-auto p-6 bg-white border border-gray-300 rounded-lg shadow-md">

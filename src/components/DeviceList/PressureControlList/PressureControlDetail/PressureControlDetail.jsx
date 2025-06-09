@@ -8,7 +8,6 @@ export default function PressureControlDetail() {
   const location = useLocation();
 
   const data = location.state || {};
-  console.log("id", data.id);
 
 
   return (

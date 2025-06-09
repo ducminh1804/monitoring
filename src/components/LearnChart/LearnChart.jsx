@@ -5,8 +5,8 @@ import { dataSample } from "./data";
 // import useMqttClient from "../../services/useMqqtClient";
 // import useMqttClient from "../../services/useMqqtClient";
 export default function LearnChart({ data }) {
-  console.log("data", data);
-  console.log("dataSample", dataSample);
+  // console.log("data", data);
+  // console.log("dataSample", dataSample);
 
   // ham renderchart nam trong file optionChart.js, ngay ben duoi
   // const chart = renderChart(data);
@@ -44,7 +44,7 @@ export default function LearnChart({ data }) {
 
   return (
     <div>
-      <h1>Learn Chart</h1>
+      {/* <h1>Learn Chart</h1> */}
       <div
         ref={chartRef}
         style={{

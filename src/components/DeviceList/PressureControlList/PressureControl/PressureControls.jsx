@@ -9,8 +9,8 @@ export default function PressureControl(props) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    console.log("object");
-    navigate(`/main/devices/pressureControl/${props.data.id}`, {
+    // console.log("object");
+    navigate(`/devices/pressureControl/${props.data.id}`, {
       state: props.data,
     });
   };
@@ -25,11 +25,11 @@ export default function PressureControl(props) {
   };
   const location = useLocation();
   const data = location.state || {};
-  console.log("data", data);
-  console.log("id", data.id);
+  // console.log("data", data);
+  // console.log("id", data.id);
 
   const handleEdit = () => {
-    navigate(`/main/devices/pressureControl/${data.id}/edit`);
+    navigate(`/devices/pressureControl/${data.id}/edit`);
   };
 
   const [valStatus, setValStatus] = useState({

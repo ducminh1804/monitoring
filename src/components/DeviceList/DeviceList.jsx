@@ -8,7 +8,7 @@ export default function DeviceList({ device }) {
   const handleClick = () => {
 
     // console.log(device.deviceId);
-    navigate(`/main/devices/${device.deviceType}/${device.deviceId}`);
+    navigate(`/devices/${device.deviceType}/${device.deviceId}`);
   };
   // const type = device.deviceType;
 

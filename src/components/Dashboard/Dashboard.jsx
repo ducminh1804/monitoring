@@ -37,7 +37,7 @@ export default function Dashboard() {
   };
   return (
     <div>
-      <button onClick={handleLogin}>click</button>
+      {/* <button onClick={handleLogin}>click</button> */}
       <LearnChart data={data} />
     </div>
   );

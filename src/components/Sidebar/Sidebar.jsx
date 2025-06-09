@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router";
 
 export default function Sidebar() {
@@ -91,7 +91,7 @@ export default function Sidebar() {
                   "": !isActive,
                 })
               }
-              to="/main/reports"
+              to="/reports"
             >
               Thống kê
             </NavLink>
@@ -125,7 +125,7 @@ export default function Sidebar() {
                   "": !isActive,
                 })
               }
-              to="/main/devices"
+              to="/devices"
             >
               Thiết bị
             </NavLink>

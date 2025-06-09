@@ -14,7 +14,7 @@ export default function Login() {
 
     dispatch(login());
     
-    navigate("/main/reports");
+    navigate("/reports");
   };
 
   return (

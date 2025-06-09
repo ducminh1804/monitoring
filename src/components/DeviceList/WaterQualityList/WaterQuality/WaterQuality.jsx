@@ -11,7 +11,7 @@ export default function WaterQuality(props) {
 
   const handleClick = () => {
     console.log("object");
-    navigate(`/main/devices/waterQuality/${props.data.id}`, {
+    navigate(`/devices/waterQuality/${props.data.id}`, {
       state: props.data,
     });
   };
@@ -27,11 +27,11 @@ export default function WaterQuality(props) {
   console.log("id", id);
 
   const handleEdit = () => {
-    navigate(`/main/devices/waterQuality/${id}/edit`);
+    navigate(`/devices/waterQuality/${id}/edit`);
   };
 
   const handleInfo = () => {
-    navigate(`/main/devices/waterQuality/${id}/info`);
+    navigate(`/devices/waterQuality/${id}/info`);
   };
 
   const [valStatus, setValStatus] = useState({
