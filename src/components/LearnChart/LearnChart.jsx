@@ -1,21 +1,20 @@
 import React, { useEffect, useRef } from "react";
 import { renderChart } from "./optionChart";
 import * as echarts from "echarts";
-import { dataSample } from "./data";
 // import useMqttClient from "../../services/useMqqtClient";
 // import useMqttClient from "../../services/useMqqtClient";
-export default function LearnChart({ data }) {
-  // console.log("data", data);
-  // console.log("dataSample", dataSample);
-
-  // ham renderchart nam trong file optionChart.js, ngay ben duoi
-  // const chart = renderChart(data);
-
-  // console.log(chart);
+export default function LearnChart({
+  data,
+  selectedDevice1,
+  selectedDevice2,
+  option,
+}) {
   const chartRef = useRef(null);
 
+  // console.log(option);
+
   useEffect(() => {
-    const chart = renderChart(data);
+    const chart = renderChart(data, option, selectedDevice1, selectedDevice2);
     const chartInstance = echarts.init(chartRef.current, "", {
       renderer: "canvas",
     });
@@ -23,7 +22,13 @@ export default function LearnChart({ data }) {
     return () => {
       chartInstance.dispose();
     };
-  }, [data]);
+  }, [data, option, selectedDevice1, selectedDevice2]);
+
+  // Log thiết bị đã chọn để kiểm tra
+  useEffect(() => {
+    // console.log("Thiết bị 1 đã chọn:", selectedDevice1);
+    // console.log("Thiết bị 2 đã chọn:", selectedDevice2);
+  }, [selectedDevice1, selectedDevice2]);
 
   // const { client, mqttConnect, subscribe, payload } =
   //   useMqttClient();
@@ -49,6 +54,7 @@ export default function LearnChart({ data }) {
         ref={chartRef}
         style={{
           width: "auto",
+          // height: "400px",
           height: "400px",
         }}
       ></div>

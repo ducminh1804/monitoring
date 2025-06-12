@@ -1,6 +1,7 @@
 import React from 'react'
 import ActiveBtn from "../../../../commons/ActiveBtn"
 export default function ValveBreakerEdit() {
+  console.log("render lai")
 return (
   <div>
     <ul className="divide-y divide-gray-200">
