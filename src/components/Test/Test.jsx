@@ -10,7 +10,7 @@ export default function Test() {
   return (
     <div>
       {/* <Switch id="tb1" /> */}
-      <BaseConfig />
+      {/* <BaseConfig />
       <PulseClockSettings />
       <RotationOverTimeConfig />
       <RotationByPressureConfig />
@@ -19,7 +19,7 @@ export default function Test() {
       <AutoByPressureConfig />
       <RotationRefByPressure />
       <ValveByPressureRef condition={"pv_sp"} />
-      <ValveByPressureRef condition={"sp_pv"} />
+      <ValveByPressureRef condition={"sp_pv"} /> */}
     </div>
   );
 }

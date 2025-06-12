@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { useState } from "react";
 import { NavLink } from "react-router";
+import FindDevice from "../FindDevice/FindDevice";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
@@ -129,6 +130,9 @@ export default function Sidebar() {
             >
               Thiết bị
             </NavLink>
+          </div>
+          <div>
+            <FindDevice />
           </div>
         </nav>
       </div>

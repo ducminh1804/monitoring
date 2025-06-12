@@ -47,7 +47,7 @@ export default function PressureControl(props) {
         <div>
           {!data.id ? (
             <div className="flex justify-between items-center my-1 border rounded p-2">
-              <h1>1008</h1>
+              <h1>{1008 + Number(props.data.id)}</h1>
               <button
                 onClick={handleClick}
                 type="button"
@@ -58,7 +58,7 @@ export default function PressureControl(props) {
             </div>
           ) : (
             <div className="relative flex justify-between items-center border rounded p-2">
-              <h1>10085444</h1>
+              <h1>{1008 + Number(props.data.id)}</h1>
               <div className="flex items-center gap-2">
                 <div
                   onClick={handleConnect}

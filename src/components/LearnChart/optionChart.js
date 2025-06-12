@@ -1,6 +1,7 @@
 export const renderChart = (data, option, selectedDevice1, selectedDevice2) => {
   const width = window.innerWidth;
 
+  // Y-axis cấu hình cho từng loại dữ liệu
   const yAxisFull = [
     {
       type: "value",
@@ -44,17 +45,24 @@ export const renderChart = (data, option, selectedDevice1, selectedDevice2) => {
     },
   ];
 
+  // Color map cho từng thiết bị + thuộc tính
   const colorMap = {
-    "Pressure In": "#6982CD",
-    "Pressure Out": "#A4E287",
-    Velocity: "#FAC858",
-    "Flow Rate": "rgba(225, 11, 11, 1)",
+    [`Pressure In (${selectedDevice1})`]: "#6982CD",
+    [`Pressure In (${selectedDevice2})`]: "#6982CD",
+
+    [`Pressure Out (${selectedDevice1})`]: "#A4E287",
+    [`Pressure Out (${selectedDevice2})`]: "#A4E287",
+
+    [`Velocity (${selectedDevice1})`]: "#FAC858",
+    [`Velocity (${selectedDevice2})`]: "#FAC858",
+
+    [`Flow Rate (${selectedDevice1})`]: "rgba(225, 11, 11, 1)",
+    [`Flow Rate (${selectedDevice2})`]: "rgba(225, 11, 11, 1)",
   };
 
-  // Lọc yAxis theo option
+  // Lọc các yAxis mà user chọn
   const selectYAxis = yAxisFull.filter((axis) => option.includes(axis.name));
 
-  // Nếu không có option nào được chọn
   if (selectYAxis.length === 0) {
     return {
       title: { text: "Không có thuộc tính nào được chọn", left: "center" },
@@ -65,18 +73,51 @@ export const renderChart = (data, option, selectedDevice1, selectedDevice2) => {
     };
   }
 
-  // Tạo series khớp theo yAxis đã chọn
-  const selectSeries = selectYAxis.map((axis, idx) => ({
-    name: axis.name,
-    type: "line",
-    encode: { x: "time", y: axis.name },
-    yAxisIndex: idx,
-    lineStyle: { color: colorMap[axis.name], type: "solid", width: 2 },
-    itemStyle: { color: colorMap[axis.name] },
-  }));
+  // Tạo series cho mỗi thiết bị * option
+  const series = [];
 
-  console.log(option);
-  console.log(selectedDevice1, selectedDevice2);
+  option.forEach((field) => {
+    const yAxisIndex = selectYAxis.findIndex((y) => y.name === field);
+
+    // Thiết bị 1
+    const field1 = `${field} (${selectedDevice1})`;
+    if (data[0] && field1 in data[0]) {
+      series.push({
+        name: field1,
+        type: "line",
+        encode: { x: "time", y: field1 },
+        yAxisIndex,
+        lineStyle: {
+          color: colorMap[field1],
+          width: 2,
+          type: "solid",
+        },
+        itemStyle: {
+          color: colorMap[field1],
+        },
+      });
+    }
+
+    // Thiết bị 2
+    const field2 = `${field} (${selectedDevice2})`;
+    if (selectedDevice2 && data[0] && field2 in data[0]) {
+      series.push({
+        name: field2,
+        type: "line",
+        encode: { x: "time", y: field2 },
+        yAxisIndex,
+        lineStyle: {
+          color: colorMap[field2],
+          width: 2,
+          type: "dashed",
+        },
+        itemStyle: {
+          color: colorMap[field2],
+        },
+      });
+    }
+  });
+
   return {
     title: { left: "1%" },
     tooltip: { trigger: "axis" },
@@ -97,6 +138,6 @@ export const renderChart = (data, option, selectedDevice1, selectedDevice2) => {
     dataset: { source: data },
     xAxis: { type: "category" },
     yAxis: selectYAxis,
-    series: selectSeries,
+    series,
   };
 };
