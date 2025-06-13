@@ -1,20 +1,20 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { saveDevice } from "../../utils/localstorage";
+import Spin from "../../commons/Spin/Spin"; // hoặc Loading nếu bạn dùng tên khác
 
 function AddDevice() {
   const [deviceType, setDeviceType] = useState("");
   const [deviceName, setDeviceName] = useState("");
   const [deviceId, setDeviceId] = useState("");
   const [idError, setIdError] = useState("");
+  const [loading, setLoading] = useState(false); // ← THÊM LOADING
   const navigate = useNavigate();
 
-  // ➡️ Generate ID 4 chữ số
   const generateRandomId = () => {
     return Math.floor(1000 + Math.random() * 9000).toString();
   };
 
-  // ➡️ Khi chọn loại thiết bị => luôn tự động tạo ID
   useEffect(() => {
     if (deviceType) {
       const newId = generateRandomId();
@@ -26,10 +26,7 @@ function AddDevice() {
     }
   }, [deviceType]);
 
-  const validateId = (id) => {
-    const regex = /^[0-9]{4}$/; // chỉ đúng 4 số
-    return regex.test(id);
-  };
+  const validateId = (id) => /^[0-9]{4}$/.test(id);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,12 +34,14 @@ function AddDevice() {
       setIdError("ID thiết bị phải gồm đúng 4 chữ số!");
       return;
     }
-    console.log("Loại thiết bị:", deviceType);
-    console.log("Tên thiết bị:", deviceName);
-    console.log("ID thiết bị:", deviceId);
 
-    saveDevice(deviceType, deviceName, deviceId);
-    navigate("/devices");
+    setLoading(true); // Bắt đầu loading
+
+    setTimeout(() => {
+      saveDevice(deviceType, deviceName, deviceId);
+      setLoading(false);
+      navigate("/devices");
+    }, 2000);
   };
 
   return (
@@ -105,14 +104,40 @@ function AddDevice() {
           />
         </div>
 
-        {/* Submit */}
-        <div className="flex justify-center">
-          <button
-            type="submit"
-            className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 active:bg-blue-700 transition-all duration-200"
-          >
-            Tạo Thiết Bị
-          </button>
+        {/* Submit + Loading */}
+        <div className="flex justify-center min-h-[48px]">
+          {loading ? (
+            <div className="flex items-center gap-2 text-blue-500 font-semibold text-sm">
+              <svg
+                className="w-5 h-5 animate-spin text-blue-500"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                />
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                />
+              </svg>
+              Đang tạo thiết bị...
+            </div>
+          ) : (
+            <button
+              type="submit"
+              className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 active:bg-blue-700 transition-all duration-200"
+            >
+              Tạo Thiết Bị
+            </button>
+          )}
         </div>
       </form>
     </div>
