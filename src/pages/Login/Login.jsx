@@ -5,16 +5,22 @@ import "./style.css";
 import Spinner from "../../commons/Spinner";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/slices/AuthSlice";
+import SpinnerV2 from "../../commons/SpinnerV2";
+import Spin from "../../commons/Spin/Spin";
 export default function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
 
-    dispatch(login());
-    
-    navigate("/reports");
+    setTimeout(() => {
+      dispatch(login());
+
+      navigate("/reports");
+      setLoading(false);
+    }, 2000);
   };
 
   return (
@@ -54,6 +60,7 @@ export default function Login() {
               />
             </div>
             <div className="flex items-center justify-between">
+              {/* <Spin /> */}
               {loading && <Loading />}
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

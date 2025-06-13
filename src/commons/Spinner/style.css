@@ -1,6 +1,6 @@
 /* HTML: <div class="loader"></div> */
 
-.loader {
+.spinner {
   width: 20px;
   aspect-ratio: 1;
   border-radius: 50%;

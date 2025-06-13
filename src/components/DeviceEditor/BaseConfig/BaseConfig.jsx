@@ -68,6 +68,64 @@ export default function BaseConfig() {
             </div>
           </div>
         </li>
+
+        <li className="py-4">
+          {/* Tiêu đề GPS */}
+          <div className="flex items-center mb-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-6 h-6 mr-2 text-blue-500"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 3a6 6 0 016 6c0 1.657-.672 3.157-1.758 4.243A5.978 5.978 0 0112 18a5.978 5.978 0 01-4.242-1.757A6.001 6.001 0 0112 6z"
+              />
+            </svg>
+            <span className="font-medium">GPS</span>
+          </div>
+
+          {/* Input + Icon mở Google Maps */}
+          <div className="flex items-center gap-2 ml-8">
+            <input
+              type="text"
+              value="10.762622,106.660172"
+              readOnly
+              className="border px-2 py-1 rounded w-full max-w-xs"
+            />
+            <a
+              href={`https://www.google.com/maps?q=10.762622,106.660172`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-blue-600"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="w-5 h-5 text-blue-600 hover:text-blue-800 transition-colors"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 10.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19.5 10.5c0 7-7.5 10.5-7.5 10.5S4.5 17.5 4.5 10.5a7.5 7.5 0 1115 0z"
+                />
+              </svg>
+            </a>
+          </div>
+        </li>
+
         <li className="py-4">
           <div className="flex items-center">
             <svg

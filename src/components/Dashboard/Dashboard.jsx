@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../redux/slices/AuthSlice";
 import LearnChart from "../LearnChart/LearnChart";
 import InputDevice from "./InputDevice/InputDevice";
+import Spin from "../../commons/Spin/Spin";
+import Loading from "../../commons/Loading/Loading";
 
 export default function Dashboard() {
   const [data, setData] = useState([]);
@@ -95,7 +97,6 @@ export default function Dashboard() {
         option={option}
         onToggleOption={handleToggleOption}
       />
-
       <div className="flex-grow overflow-auto mt-4">
         <LearnChart
           data={data}
