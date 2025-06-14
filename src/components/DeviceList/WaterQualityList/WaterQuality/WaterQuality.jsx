@@ -100,7 +100,7 @@ export default function WaterQuality(props) {
 
         <div>
           <div className="flex text-[15px] justify-between ">
-            <p className="">Battery: {props.data.Battery}V</p>
+            <p className="">Battery: {props.data.Battery} %pin con laiV</p>
             <p>RTC: {props.data.RTC}</p>
           </div>{" "}
           <div className="flex text-[15px] justify-between ">
@@ -116,8 +116,8 @@ export default function WaterQuality(props) {
             <p>Conductivity: {props.data.Conductivity} (uS/cm)</p>
           </div>
           <div className="flex text-[15px] justify-between ">
-            <p>Chỉ số 5..</p>
-            <p>Chỉ số 6..</p>
+            <p>Chỉ số 5.. cong suat tieu thu / ngay</p>
+            <p>Chỉ số 6.. Tgian su dung uoc tinh con lai</p>
           </div>
           <div className="flex text-[15px] justify-between ">
             <p>Chỉ số 7..</p>

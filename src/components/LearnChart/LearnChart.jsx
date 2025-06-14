@@ -55,7 +55,7 @@ export default function LearnChart({
         style={{
           width: "auto",
           // height: "400px",
-          height: "800px",
+          height: "500px",
         }}
       ></div>
     </div>

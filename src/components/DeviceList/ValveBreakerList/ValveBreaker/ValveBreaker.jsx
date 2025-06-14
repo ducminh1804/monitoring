@@ -42,6 +42,7 @@ export default function ValveBreaker(props) {
         {!id ? (
           <div className="flex justify-between items-center my-1 border rounded p-2">
             <h1>{1008 + Number(props.data.id)}</h1>
+            thong so hien thi dma
             <button
               onClick={handleClick}
               type="button"
@@ -62,7 +63,6 @@ export default function ValveBreaker(props) {
                 <span>call</span>
                 <span className="">1:15</span>
               </div>
-
               <div
                 onClick={handleEdit}
                 className="cursor-pointer active:scale-95 transition-all border border-gray-300 hover:border-blue-500 p-2 rounded"
@@ -87,6 +87,7 @@ export default function ValveBreaker(props) {
               />
             </div>
             <span>Van {index + 1} </span>
+            mode 1 : mode 2: lock
           </div>
         ))}
       </div>
