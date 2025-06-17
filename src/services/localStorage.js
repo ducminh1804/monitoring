@@ -11,3 +11,11 @@ export const removeAuthFromStorage = () => {
   localStorage.removeItem("isAuthenticated");
 };
 
+export const setSortDeviceToStorage = (sort) => {
+  localStorage.setItem("sortDevices", JSON.stringify(sort));
+};
+
+export const getSortDeviceFromStorage = () => {
+  const data = localStorage.getItem("sortDevices");
+  return data ? JSON.parse(data) : [];
+};

@@ -4,6 +4,7 @@ import val_off from "/svgs/val_off.svg";
 import val_on from "/svgs/val_on.svg";
 import { Pencil, RefreshCcw } from "lucide-react";
 import Spinner from "../../../../commons/Spinner";
+import ValveCustom from "../../../CustomComponent/ValveCustom/ValveCustom";
 
 export default function DataLogger(props) {
   const navigate = useNavigate();
@@ -32,6 +33,10 @@ export default function DataLogger(props) {
   // console.log(id);
   const handleEdit = () => {
     navigate(`/devices/dataLogger/${data.id}/edit`);
+  };
+
+  const handleActive = (id, state) => {
+    console.log(id, state);
   };
   return (
     <div className="md:w-[80%]  border p-2">
@@ -70,12 +75,16 @@ export default function DataLogger(props) {
           </div>
         )}
       </div>
-      <div className="flex justify-center mt-4 ">
-        <div className="border w-full rounded  p-2 flex flex-col items-center gap-2">
-          <div onClick={() => setActive((prev) => !prev)} className="w-[20%]">
-            <img src={active ? val_on : val_off} alt="" />
-          </div>
-          <span>Lock/Clean </span>
+      <div className="mt-4  flex items-center justify-center rounded border">
+        <div className="w-[20%]">
+          <ValveCustom
+            key={`dataLogger`}
+            edit={data.id}
+            id={`DataLogger`}
+            handleActive={handleActive}
+            name={`Lock/Clean`}
+            border={false}
+          />
         </div>
       </div>
 

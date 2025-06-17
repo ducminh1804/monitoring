@@ -43,9 +43,9 @@ export default function Dashboard() {
         return XLSX.utils.sheet_to_json(firstSheet, { raw: false });
       };
 
-      const data1 = await loadExcel(`/excels/tb1/2025-06-14.xlsx`);
+      const data1 = await loadExcel(`/monitoring/excels/tb1/2025-06-14.xlsx`);
       const data2 = selectedDevice2
-        ? await loadExcel(`/excels/tb2/2025-06-14.xlsx`)
+        ? await loadExcel(`/monitoring/excels/tb2/2025-06-14.xlsx`)
         : [];
 
       // Chuẩn hóa tên field theo thiết bị

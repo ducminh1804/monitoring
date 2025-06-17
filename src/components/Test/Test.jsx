@@ -9,6 +9,9 @@ import BaseConfig from "../DeviceEditor/BaseConfig";
 export default function Test() {
   return (
     <div>
+      <h1 className="inline-block bg-blue-500 text-white text-5xl italic">
+        helloworld
+      </h1>
       {/* <Switch id="tb1" /> */}
       {/* <BaseConfig />
       <PulseClockSettings />

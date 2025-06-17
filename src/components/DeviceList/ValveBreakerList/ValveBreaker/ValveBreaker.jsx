@@ -4,14 +4,13 @@ import { useLocation, useNavigate } from "react-router";
 import val_on from "/svgs/val_on.svg";
 import val_off from "/svgs/val_off.svg";
 import Spinner from "../../../../commons/Spinner";
+import ValveCustom from "../../../CustomComponent/ValveCustom/ValveCustom";
 
 export default function ValveBreaker(props) {
   const navigate = useNavigate();
   const location = useLocation();
   const id = location.state?.id;
-  console.log(id);
   const handleClick = () => {
-    console.log("object");
     navigate(`/devices/valveBreaker/${props.data.id}`, {
       state: props.data,
     });
@@ -36,12 +35,15 @@ export default function ValveBreaker(props) {
   const handleEdit = () => {
     navigate(`/devices/valveBreaker/${id}/edit`);
   };
+  const handleActive = (id, name, state) => {
+    console.log(id, name, state);
+  };
   return (
     <div className="md:w-[80%]  mx-auto p-6 bg-white border border-gray-300 rounded-lg shadow-md">
       <div>
         {!id ? (
           <div className="flex justify-between items-center my-1 border rounded p-2">
-            <h1>{1008 + Number(props.data.id)}</h1>
+            <h1>{props.data.name}</h1>
             thong so hien thi dma
             <button
               onClick={handleClick}
@@ -75,36 +77,42 @@ export default function ValveBreaker(props) {
       </div>
 
       <div className="flex justify-center mt-4 gap-2">
-        {Array.from({ length: 3 }).map((_, index) => (
-          <div
-            key={`val-${index}`}
-            className="border w-full rounded  p-2 flex flex-col items-center gap-2"
-          >
-            <div className="w-[80%] ">
-              <img
-                src={valStatus[`val_${index + 1}`] ? val_on : val_off}
-                alt=""
-              />
-            </div>
-            <span>Van {index + 1} </span>
-            mode 1 : mode 2: lock
-          </div>
-        ))}
+        <ValveCustom
+          key={`dataLogger-1`}
+          edit={id}
+          id={`DataLogger`}
+          handleActive={handleActive}
+          name={`Mode 1`}
+        />
+        <ValveCustom
+          key={`dataLogger-2`}
+          edit={id}
+          id={`DataLogger`}
+          handleActive={handleActive}
+          name={`Mode 2`}
+        />
+        <ValveCustom
+          key={`dataLogger-3`}
+          edit={id}
+          id={`DataLogger`}
+          handleActive={handleActive}
+          name={`Lock`}
+        />
       </div>
 
       <div>
         <div className="flex text-[15px] justify-between ">
           <p className="">Battery: {props.data.Battery}V</p>
           <p>RTC: {props.data.RTC}</p>
-        </div>{" "}
+        </div>
         <div className="flex text-[15px] justify-between ">
           <p>Pressure In: {props.data.PressureIn} (bar)</p>
           <p>Pressure Out: {props.data.PressureOut} (bar)</p>
-        </div>{" "}
+        </div>
         <div className="flex text-[15px] justify-between ">
           <p>Velocity: {props.data.Velocity} (m/s)</p>
           <p>Angle: {props.data.Angle}°</p>
-        </div>{" "}
+        </div>
         <div className="flex text-[15px] justify-between ">
           <p>FlowRate: {props.data.FlowRate} (m³/h)</p>
           <p>Net Flow Total: {props.data.NetFlowTotal} (m³)</p>

@@ -4,6 +4,7 @@ import val_on from "/svgs/val_on.svg";
 import val_off from "/svgs/val_off.svg";
 import Spinner from "../../../../commons/Spinner";
 import { Pencil, RefreshCcw } from "lucide-react";
+import ValveCustom from "../../../CustomComponent/ValveCustom/ValveCustom";
 
 export default function PressureControl(props) {
   const navigate = useNavigate();
@@ -32,12 +33,9 @@ export default function PressureControl(props) {
     navigate(`/devices/pressureControl/${data.id}/edit`);
   };
 
-  const [valStatus, setValStatus] = useState({
-    val_1: false,
-    val_2: false,
-    val_3: false,
-    val_4: false,
-  });
+  const handleActive = (id, state) => {
+    console.log(id, state);
+  };
 
   return (
     <div>
@@ -83,19 +81,14 @@ export default function PressureControl(props) {
         {/* =============== */}
 
         <div className="flex justify-center mt-4 gap-2">
+         
           {Array.from({ length: 4 }).map((_, index) => (
-            <div
-              key={`val-${index}`}
-              className="border w-full rounded  p-2 flex flex-col items-center gap-2"
-            >
-              <div className="w-[80%] ">
-                <img
-                  src={valStatus[`val_${index + 1}`] ? val_on : val_off}
-                  alt=""
-                />
-              </div>
-              <span>Van {index + 1} </span>
-            </div>
+            <ValveCustom key={`val-${index}`}
+            edit={data.id}
+            id={`PressureControl-${index + 1}`}
+            handleActive={handleActive}
+            name={`Van ${index + 1}`}
+            />
           ))}
         </div>
 

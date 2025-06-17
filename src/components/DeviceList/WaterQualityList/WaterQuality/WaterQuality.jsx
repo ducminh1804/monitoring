@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router";
 import Spinner from "../../../../commons/Spinner";
 import val_on from "/svgs/val_on.svg";
 import val_off from "/svgs/val_off.svg";
+import ValveCustom from "../../../CustomComponent/ValveCustom/ValveCustom";
 
 export default function WaterQuality(props) {
   const navigate = useNavigate();
@@ -42,7 +43,9 @@ export default function WaterQuality(props) {
   });
 
   const [active, setActive] = useState(false);
-
+  const handleActive = (id, name, state) => {
+    console.log(id, name, state);
+  };
   return (
     <div>
       <div className="md:w-[80%] mx-auto p-6 bg-white border border-gray-300 rounded-lg shadow-md">
@@ -89,12 +92,16 @@ export default function WaterQuality(props) {
           )}
         </div>
 
-        <div className="flex justify-center mt-4 ">
-          <div className="border w-full rounded  p-2 flex flex-col items-center gap-2">
-            <div onClick={() => setActive((prev) => !prev)} className="w-[20%]">
-              <img src={active ? val_on : val_off} alt="" />
-            </div>
-            <span>Lock/Clean </span>
+        <div className="mt-4  flex items-center justify-center rounded border">
+          <div className="w-[20%]">
+            <ValveCustom
+              key={`dataLogger`}
+              edit={id}
+              id={`DataLogger`}
+              handleActive={handleActive}
+              name={`Low Power Mode`}
+              border={false}
+            />
           </div>
         </div>
 
