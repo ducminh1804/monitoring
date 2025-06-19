@@ -8,6 +8,7 @@ export default function ValveBreakerList() {
       id: 1,
       name: "4729",
       Battery: 3.7,
+      BatteryPercent: 58,
       RTC: "01/01/2025 12:00:00",
       PressureIn: 1.2,
       PressureOut: 1.0,
@@ -28,6 +29,7 @@ export default function ValveBreakerList() {
       id: 2,
       name: "8391",
       Battery: 3.6,
+      BatteryPercent: 50,
       RTC: "02/01/2025 13:15:30",
       PressureIn: 1.5,
       PressureOut: 1.3,
@@ -48,6 +50,7 @@ export default function ValveBreakerList() {
       id: 3,
       name: "1903",
       Battery: 3.8,
+      BatteryPercent: 67,
       RTC: "03/01/2025 14:45:20",
       PressureIn: 1.1,
       PressureOut: 0.9,
@@ -68,6 +71,7 @@ export default function ValveBreakerList() {
       id: 4,
       name: "7056",
       Battery: 3.5,
+      BatteryPercent: 42,
       RTC: "04/01/2025 11:20:10",
       PressureIn: 1.6,
       PressureOut: 1.4,
@@ -88,6 +92,7 @@ export default function ValveBreakerList() {
       id: 5,
       name: "6247",
       Battery: 3.9,
+      BatteryPercent: 75,
       RTC: "05/01/2025 09:10:05",
       PressureIn: 1.3,
       PressureOut: 1.1,
@@ -108,6 +113,7 @@ export default function ValveBreakerList() {
       id: 6,
       name: "5082",
       Battery: 3.4,
+      BatteryPercent: 33,
       RTC: "06/01/2025 15:50:40",
       PressureIn: 1.7,
       PressureOut: 1.6,
@@ -128,6 +134,7 @@ export default function ValveBreakerList() {
       id: 7,
       name: "9364",
       Battery: 3.6,
+      BatteryPercent: 50,
       RTC: "07/01/2025 08:25:15",
       PressureIn: 1.4,
       PressureOut: 1.2,
@@ -148,6 +155,7 @@ export default function ValveBreakerList() {
       id: 8,
       name: "2837",
       Battery: 3.2,
+      BatteryPercent: 17,
       RTC: "08/01/2025 10:05:50",
       PressureIn: 1.9,
       PressureOut: 1.5,
@@ -168,6 +176,7 @@ export default function ValveBreakerList() {
       id: 9,
       name: "1145",
       Battery: 3.85,
+      BatteryPercent: 71,
       RTC: "09/01/2025 17:35:25",
       PressureIn: 1.0,
       PressureOut: 0.8,
@@ -188,6 +197,7 @@ export default function ValveBreakerList() {
       id: 10,
       name: "7501",
       Battery: 3.95,
+      BatteryPercent: 79,
       RTC: "10/01/2025 19:00:00",
       PressureIn: 2.0,
       PressureOut: 1.7,
@@ -206,7 +216,7 @@ export default function ValveBreakerList() {
     },
   ];
 
-  const [sample, setSample] = useState([]);
+  const [sample, setSample] = useState(getSortDeviceFromStorage());
   const [sortList, setSortList] = useState([]);
   useEffect(() => {
     const sortList = [...dataList].sort((a, b) => {

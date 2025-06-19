@@ -43,7 +43,9 @@ export default function ValveBreaker(props) {
       <div>
         {!id ? (
           <div className="flex justify-between items-center my-1 border rounded p-2">
-            <h1>{props.data.name}</h1>
+            <h1 className="font-bold text-gray-700">
+              Device #{1008 + Number(props.data.id)}
+            </h1>{" "}
             thong so hien thi dma
             <button
               onClick={handleClick}
@@ -55,7 +57,9 @@ export default function ValveBreaker(props) {
           </div>
         ) : (
           <div className="relative flex justify-between items-center border rounded p-2">
-            <h1>{1008 + Number(props.data.id)}</h1>
+            <h1 className="font-bold text-gray-700">
+              Device #{1008 + Number(props.data.id)}
+            </h1>{" "}
             <div className="flex items-center gap-2">
               <div
                 onClick={handleConnect}
@@ -100,33 +104,51 @@ export default function ValveBreaker(props) {
         />
       </div>
 
-      <div>
-        <div className="flex text-[15px] justify-between ">
-          <p className="">Battery: {props.data.Battery}V</p>
-          <p>RTC: {props.data.RTC}</p>
-        </div>
-        <div className="flex text-[15px] justify-between ">
-          <p>Pressure In: {props.data.PressureIn} (bar)</p>
-          <p>Pressure Out: {props.data.PressureOut} (bar)</p>
-        </div>
-        <div className="flex text-[15px] justify-between ">
-          <p>Velocity: {props.data.Velocity} (m/s)</p>
-          <p>Angle: {props.data.Angle}°</p>
-        </div>
-        <div className="flex text-[15px] justify-between ">
-          <p>FlowRate: {props.data.FlowRate} (m³/h)</p>
-          <p>Net Flow Total: {props.data.NetFlowTotal} (m³)</p>
-        </div>
-        <div className="flex text-[15px] justify-between ">
-          <p>Forward Flow: {props.data.ForwardFlow} (m³)</p>
-          <p>Reserve Flow: {props.data.ReserveFlow} (m³)</p>
-        </div>
-        <div className="flex text-[15px] justify-between ">
-          <p>User Span: {props.data.UserSpan}</p>
-          <p>
-            Low Power Metter: {props.data.LowPowerMetter ? "True" : "False"}
-          </p>
-        </div>
+      <div className="my-2">
+        <table className="w-full text-[15px]">
+          <tbody>
+            <tr>
+              <td className="font-semibold text-left w-1/4">Battery:</td>
+              <td className="text-left italic w-1/4">
+                {props.data.Battery}V ({props.data.BatteryPercent}%)
+              </td>
+              <td className="font-semibold text-left w-1/4">RTC:</td>
+              <td className="text-left w-1/4">{props.data.RTC}</td>
+            </tr>
+            <tr>
+              <td className="font-semibold text-left">Pressure In:</td>
+              <td className="text-left">{props.data.PressureIn} (bar)</td>
+              <td className="font-semibold text-left">Pressure Out:</td>
+              <td className="text-left">{props.data.PressureOut} (bar)</td>
+            </tr>
+            <tr>
+              <td className="font-semibold text-left">Velocity:</td>
+              <td className="text-left">{props.data.Velocity} (m/s)</td>
+              <td className="font-semibold text-left">Angle:</td>
+              <td className="text-left">{props.data.Angle}°</td>
+            </tr>
+            <tr>
+              <td className="font-semibold text-left">FlowRate:</td>
+              <td className="text-left">{props.data.FlowRate} (m³/h)</td>
+              <td className="font-semibold text-left">Net Flow Total:</td>
+              <td className="text-left">{props.data.NetFlowTotal} (m³)</td>
+            </tr>
+            <tr>
+              <td className="font-semibold text-left">Forward Flow:</td>
+              <td className="text-left">{props.data.ForwardFlow} (m³)</td>
+              <td className="font-semibold text-left">Reserve Flow:</td>
+              <td className="text-left">{props.data.ReserveFlow} (m³)</td>
+            </tr>
+            <tr>
+              <td className="font-semibold text-left">User Span:</td>
+              <td className="text-left">{props.data.UserSpan}</td>
+              <td className="font-semibold text-left">Low Power Metter:</td>
+              <td className="text-left">
+                {props.data.LowPowerMetter ? "True" : "False"}
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   );

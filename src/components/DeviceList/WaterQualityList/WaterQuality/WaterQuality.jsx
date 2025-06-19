@@ -52,7 +52,9 @@ export default function WaterQuality(props) {
         <div>
           {!id ? (
             <div className="flex justify-between items-center my-1 border rounded p-2">
-              <h1>{1008 + Number(props.data.id)}</h1>
+              <h1 className="font-bold text-gray-700">
+                Device #{1008 + Number(props.data.id)}
+              </h1>{" "}
               <button
                 onClick={handleClick}
                 type="button"
@@ -63,7 +65,9 @@ export default function WaterQuality(props) {
             </div>
           ) : (
             <div className="relative flex justify-between items-center border rounded p-2">
-              <h1>{1008 + Number(props.data.id)}</h1>
+              <h1 className="font-bold text-gray-700">
+                Device #{1008 + Number(props.data.id)}
+              </h1>{" "}
               <div className="flex items-center gap-2">
                 <div
                   onClick={handleConnect}
@@ -105,31 +109,53 @@ export default function WaterQuality(props) {
           </div>
         </div>
 
-        <div>
-          <div className="flex text-[15px] justify-between ">
-            <p className="">Battery: {props.data.Battery} %pin con laiV</p>
-            <p>RTC: {props.data.RTC}</p>
-          </div>{" "}
-          <div className="flex text-[15px] justify-between ">
-            <p>Pressure In: {props.data.PressureIn} (bar)</p>
-            <p>Pressure Out: {props.data.PressureOut} (bar)</p>
-          </div>{" "}
-          <div className="flex text-[15px] justify-between ">
-            <p>Clo: {props.data.Clo} (mg/l)</p>
-            <p>pH: {props.data.pH} (pH)</p>
-          </div>{" "}
-          <div className="flex text-[15px] justify-between ">
-            <p>Turbidity: {props.data.Turbidity} (NTU)</p>
-            <p>Conductivity: {props.data.Conductivity} (uS/cm)</p>
-          </div>
-          <div className="flex text-[15px] justify-between ">
-            <p>Chỉ số 5.. cong suat tieu thu / ngay</p>
-            <p>Chỉ số 6.. Tgian su dung uoc tinh con lai</p>
-          </div>
-          <div className="flex text-[15px] justify-between ">
-            <p>Chỉ số 7..</p>
-            <p>Chỉ số 8..</p>
-          </div>
+        <div className="my-2">
+          <table className="w-full text-[15px]">
+            <tbody>
+              <tr>
+                <td className="font-semibold text-left w-1/4">Battery:</td>
+                <td className="text-left italic w-1/4">
+                  {props.data.Battery}V ({props.data.BatteryPercent}%)
+                </td>
+                <td className="font-semibold text-left w-1/4">RTC:</td>
+                <td className="text-left w-1/4">{props.data.RTC}</td>
+              </tr>
+              <tr>
+                <td className="font-semibold text-left">Pressure In:</td>
+                <td className="text-left">{props.data.PressureIn} (bar)</td>
+                <td className="font-semibold text-left">Pressure Out:</td>
+                <td className="text-left">{props.data.PressureOut} (bar)</td>
+              </tr>
+              <tr>
+                <td className="font-semibold text-left">Clo:</td>
+                <td className="text-left">{props.data.Clo} (mg/l)</td>
+                <td className="font-semibold text-left">pH:</td>
+                <td className="text-left">{props.data.pH} (pH)</td>
+              </tr>
+              <tr>
+                <td className="font-semibold text-left">Turbidity:</td>
+                <td className="text-left">{props.data.Turbidity} (NTU)</td>
+                <td className="font-semibold text-left">Conductivity:</td>
+                <td className="text-left">{props.data.Conductivity} (uS/cm)</td>
+              </tr>
+              <tr>
+                <td className="font-semibold text-left">
+                  Công suất tiêu thụ/ngày:
+                </td>
+                <td className="text-left">{props.data.Index5}</td>
+                <td className="font-semibold text-left">
+                  Thời gian sử dụng ước tính còn lại:
+                </td>
+                <td className="text-left">{props.data.Index6}</td>
+              </tr>
+              <tr>
+                <td className="font-semibold text-left">Chỉ số 7:</td>
+                <td className="text-left">{props.data.Index7}</td>
+                <td className="font-semibold text-left">Chỉ số 8:</td>
+                <td className="text-left">{props.data.Index8}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

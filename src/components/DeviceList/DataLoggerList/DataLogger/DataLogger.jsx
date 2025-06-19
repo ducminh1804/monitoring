@@ -1,23 +1,14 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router";
-import val_off from "/svgs/val_off.svg";
-import val_on from "/svgs/val_on.svg";
 import { Pencil, RefreshCcw } from "lucide-react";
 import Spinner from "../../../../commons/Spinner";
 import ValveCustom from "../../../CustomComponent/ValveCustom/ValveCustom";
 
 export default function DataLogger(props) {
   const navigate = useNavigate();
-
-  const handleClick = () => {
-    console.log("object");
-    navigate(`/devices/dataLogger/${props.data.id}`, {
-      state: props.data,
-    });
-  };
-
-  const [active, setActive] = useState(false);
-
+  const location = useLocation();
+  const data = location.state || {};
+  console.log("data", data);
   const [loading, setLoading] = useState(false);
 
   const handleConnect = () => {
@@ -27,55 +18,57 @@ export default function DataLogger(props) {
     }, 2000);
   };
 
-  const location = useLocation();
-  const data = location.state || {};
-  // const id = location.state?.id;
-  // console.log(id);
   const handleEdit = () => {
     navigate(`/devices/dataLogger/${data.id}/edit`);
+  };
+
+  const handleClick = () => {
+    navigate(`/devices/dataLogger/${props.data.id}`, {
+      state: props.data,
+    });
   };
 
   const handleActive = (id, state) => {
     console.log(id, state);
   };
-  return (
-    <div className="md:w-[80%]  border p-2">
-      <div>
-        {!data.id ? (
-          <div className="flex justify-between items-center my-1 border rounded p-2">
-            <h1>{1008 + Number(props.data.id)}</h1>
-            <button
-              onClick={handleClick}
-              type="button"
-              className="w-[100px] px-6 py-3.5 text-base font-medium text-white bg-green-600"
-            >
-              Enter
-            </button>
-          </div>
-        ) : (
-          <div className="relative flex justify-between items-center border rounded p-2">
-            <h1>{1008 + Number(props.data.id)}</h1>
-            <div className="flex items-center gap-2">
-              <div
-                onClick={handleConnect}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border rounded flex gap-2 items-center cursor-pointer hover:bg-gray-200 p-2 rounded-md"
-              >
-                {loading ? <Spinner /> : <RefreshCcw />}
-                <span>call</span>
-                <span className="">1:15</span>
-              </div>
 
-              <div
-                onClick={handleEdit}
-                className="cursor-pointer active:scale-95 transition-all border border-gray-300 hover:border-blue-500 p-2 rounded"
-              >
-                <Pencil />
-              </div>
+  return (
+    <div className="md:w-[80%] border p-2 rounded-lg shadow bg-white">
+      {!data.id ? (
+        <div className="flex justify-between items-center my-1 border rounded p-2">
+          <h1 className="font-bold text-gray-700">
+            Device #{1008 + Number(props.data.id)}
+          </h1>
+          <button
+            onClick={handleClick}
+            className="w-[100px] px-6 py-2 text-base font-medium text-white bg-green-600 rounded hover:bg-green-700"
+          >
+            Enter
+          </button>
+        </div>
+      ) : (
+        <div className="relative flex justify-between items-center border rounded p-2">
+          <h1 className="font-bold text-gray-700">
+            Device #{1008 + Number(props.data.id)}
+          </h1>
+          <div className="flex items-center gap-2">
+            <div
+              onClick={handleConnect}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border rounded flex gap-2 items-center cursor-pointer hover:bg-gray-100 p-2"
+            >
+              {loading ? <Spinner /> : <RefreshCcw />} <span>call</span>
+            </div>
+            <div
+              onClick={handleEdit}
+              className="cursor-pointer border p-2 rounded hover:border-blue-500"
+            >
+              <Pencil />
             </div>
           </div>
-        )}
-      </div>
-      <div className="mt-4  flex items-center justify-center rounded border">
+        </div>
+      )}
+
+      <div className="mt-4 flex justify-center border rounded p-2">
         <div className="w-[20%]">
           <ValveCustom
             key={`dataLogger`}
@@ -89,32 +82,50 @@ export default function DataLogger(props) {
       </div>
 
       <div className="my-2">
-        <div className="flex text-[15px] justify-between ">
-          <p className="">Battery: {props.data.Battery}V</p>
-          <p>RTC: {props.data.RTC}</p>
-        </div>
-        <div className="flex text-[15px] justify-between ">
-          <p>Pressure In: {props.data.PressureIn} (bar)</p>
-          <p>Pressure Out: {props.data.PressureOut} (bar)</p>
-        </div>
-        <div className="flex text-[15px] justify-between ">
-          <p>Velocity: {props.data.Velocity} (m/s)</p>
-          <p>Angle: {props.data.Angle}°</p>
-        </div>
-        <div className="flex text-[15px] justify-between ">
-          <p>FlowRate: {props.data.FlowRate} (m³/h)</p>
-          <p>Net Flow Total: {props.data.NetFlowTotal} (m³)</p>
-        </div>
-        <div className="flex text-[15px] justify-between ">
-          <p>Forward Flow: {props.data.ForwardFlow} (m³)</p>
-          <p>Reserve Flow: {props.data.ReserveFlow} (m³)</p>
-        </div>
-        <div className="flex text-[15px] justify-between ">
-          <p>User Span: {props.data.UserSpan}</p>
-          <p>
-            Low Power Metter: {props.data.LowPowerMetter ? "True" : "False"}
-          </p>
-        </div>
+        <table className="w-full text-[15px]">
+          <tbody>
+            <tr>
+              <td className="font-semibold text-left w-1/4">Battery:</td>
+              <td className="text-left italic w-1/4">
+                {data.Battery}V ({data.BatteryPercent}%)
+              </td>
+              <td className="font-semibold text-left w-1/4">RTC:</td>
+              <td className="text-left w-1/4">{data.RTC}</td>
+            </tr>
+            <tr>
+              <td className="font-semibold text-left">Pressure In:</td>
+              <td className="text-left">{data.PressureIn} (bar)</td>
+              <td className="font-semibold text-left">Pressure Out:</td>
+              <td className="text-left">{data.PressureOut} (bar)</td>
+            </tr>
+            <tr>
+              <td className="font-semibold text-left">Velocity:</td>
+              <td className="text-left">{data.Velocity} (m/s)</td>
+              <td className="font-semibold text-left">Angle:</td>
+              <td className="text-left">{data.Angle}°</td>
+            </tr>
+            <tr>
+              <td className="font-semibold text-left">FlowRate:</td>
+              <td className="text-left">{data.FlowRate} (m³/h)</td>
+              <td className="font-semibold text-left">Net Flow Total:</td>
+              <td className="text-left">{data.NetFlowTotal} (m³)</td>
+            </tr>
+            <tr>
+              <td className="font-semibold text-left">Forward Flow:</td>
+              <td className="text-left">{data.ForwardFlow} (m³)</td>
+              <td className="font-semibold text-left">Reserve Flow:</td>
+              <td className="text-left">{data.ReserveFlow} (m³)</td>
+            </tr>
+            <tr>
+              <td className="font-semibold text-left">User Span:</td>
+              <td className="text-left">{data.UserSpan}</td>
+              <td className="font-semibold text-left">Low Power Metter:</td>
+              <td className="text-left">
+                {data.LowPowerMetter ? "True" : "False"}
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   );

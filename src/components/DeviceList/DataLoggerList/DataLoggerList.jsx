@@ -5,6 +5,7 @@ export default function DataLoggerList() {
     {
       id: 1,
       Battery: 3.7,
+      BatteryPercent: 85,
       RTC: "01/01/2025 12:00:00",
       PressureIn: 1.2,
       PressureOut: 1.0,
@@ -16,14 +17,11 @@ export default function DataLoggerList() {
       ReserveFlow: 4,
       UserSpan: 5,
       LowPowerMetter: false,
-      Val_1: 0,
-      Val_2: 1,
-      Val_3: 0,
-      Val_4: 1,
     },
     {
       id: 2,
       Battery: 3.6,
+      BatteryPercent: 73,
       RTC: "02/01/2025 13:15:30",
       PressureIn: 1.5,
       PressureOut: 1.3,
@@ -35,14 +33,11 @@ export default function DataLoggerList() {
       ReserveFlow: 6,
       UserSpan: 7,
       LowPowerMetter: true,
-      Val_1: 0,
-      Val_2: 0,
-      Val_3: 1,
-      Val_4: 0,
     },
     {
       id: 3,
       Battery: 3.8,
+      BatteryPercent: 92,
       RTC: "03/01/2025 14:45:20",
       PressureIn: 1.1,
       PressureOut: 0.9,
@@ -54,16 +49,12 @@ export default function DataLoggerList() {
       ReserveFlow: 4,
       UserSpan: 6,
       LowPowerMetter: false,
-      Val_1: 1,
-      Val_2: 0,
-      Val_3: 1,
-      Val_4: 0,
     },
   ];
   return (
-    <div>
+    <div className="space-y-2 max-h-[600px] overflow-y-auto pr-1">
       {dataList.map((item, index) => (
-        <div className="mb-2" key={index}>
+        <div key={index}>
           <DataLogger data={item} />
         </div>
       ))}
