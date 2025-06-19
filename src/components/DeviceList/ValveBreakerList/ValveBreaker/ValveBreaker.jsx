@@ -44,7 +44,7 @@ export default function ValveBreaker(props) {
         {!id ? (
           <div className="flex justify-between items-center my-1 border rounded p-2">
             <h1 className="font-bold text-gray-700">
-              Device #{1008 + Number(props.data.id)}
+              Device #{Number(props.data.name)}
             </h1>{" "}
             thong so hien thi dma
             <button
