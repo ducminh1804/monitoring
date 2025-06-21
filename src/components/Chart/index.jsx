@@ -1,3 +1,3 @@
-import { Chart } from "chart.js";
+import Chart from "./Chart";
 
-export default Chart
+export default Chart;

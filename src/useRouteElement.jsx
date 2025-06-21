@@ -3,8 +3,6 @@ import Login from "./pages/Login";
 import MainLayout from "./layouts/MainLayout/MainLayout";
 import ContentLayout from "./layouts/ContentLayout";
 import DevicePage from "./pages/DevicePage";
-import Test from "./components/Test/Test";
-import ValveBreaker from "./components/DeviceList/ValveBreakerList/ValveBreaker";
 import ValveBreakerEdit from "./components/DeviceList/ValveBreakerList/ValveBreakerEdit/ValveBreakerEdit";
 import WaterQualityEdit from "./components/DeviceList/WaterQualityList/WaterQualityEdit";
 import DataLoggerEdit from "./components/DeviceList/DataLoggerList/DataLoggerEdit/DataLoggerEdit";
@@ -59,7 +57,6 @@ export default function useRouteElement() {
                 {
                   path: "reports",
                   element: <Dashboard />,
-                  // element: <File />,
                 },
                 {
                   path: "devices",
@@ -70,7 +67,6 @@ export default function useRouteElement() {
                     },
                     {
                       path: ":deviceType",
-                      element: <Test />,
                     },
                     {
                       path: "pressureControl",

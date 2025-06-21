@@ -2,10 +2,8 @@ import { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
 import { useDispatch } from "react-redux";
 import { logout } from "../../redux/slices/AuthSlice";
-import LearnChart from "../LearnChart/LearnChart";
 import InputDevice from "./InputDevice/InputDevice";
-import Spin from "../../commons/Spin/Spin";
-import Loading from "../../commons/Loading/Loading";
+import Chart from "../Chart";
 
 export default function Dashboard() {
   const [data, setData] = useState([]);
@@ -98,7 +96,7 @@ export default function Dashboard() {
         onToggleOption={handleToggleOption}
       />
       <div className="flex-grow overflow-auto mt-4">
-        <LearnChart
+        <Chart
           data={data}
           selectedDevice1={selectedDevice1}
           selectedDevice2={selectedDevice2}
